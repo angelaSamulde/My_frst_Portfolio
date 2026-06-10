@@ -22,12 +22,12 @@ const defaultGallery = [
 
 const users = {
   angela: {
-    password: "123",
+    password: "angelaBOA",
     name: "Angela Samulde",
     role: "Office Administration Student",
     location: "Lau-an, Antique, Philippines",
     bio: "“Choose Office Administration for a better future!”\n\nOffice Administration is a course that teaches office management, communication, computer, and organizational skills. It prepares students for jobs like office assistant, secretary, and administrative officer. It helps build professionalism and skills for a successful career.",
-    school: "Bachelor of Office Administration",
+    school: "Bachelor of Science in Office Administration",
     skills: ["Communication skills", "Office management", "Filing and record keeping", "Customer service", "Administrative support", "Computer literacy"],
     image: "profile.jpg",
     goals: [
@@ -49,59 +49,80 @@ const users = {
       ["headphones", "Listening Time", "Music helps me relax, reflect, and stay inspired during busy school days."],
       ["queue_music", "Playlist Mood", "Peaceful, meaningful, and uplifting songs for studying, traveling, and quiet moments."]
     ],
+    musicIcon: "music_note",
+    musicLabel: "Music",
+    musicIntro: "Songs and playlists that fit the vibe.",
     contact: [
       ["email", "Email", "samuldeangela99@gmail.com"],
       ["call", "Phone", "09688369563"],
       ["language", "Facebook", "facebook.com/angela samulde"]
     ],
-    bannerGradient: "linear-gradient(to right, #38BDF8, #7DD3FC)",
+    bannerGradient: "linear-gradient(to right, #3ac78e, #3B82F6)", // Vibrant gradient for user interaction
+    bannerTextColor: "#FFFFFF", // White text for light banner
+    themeBadgeTextColor: "#FFFFFF", // White text for badge
     themeBadge: "OFFICE ADMINISTRATION"
   },
   kristine: {
-    password: "123",
-    name: "Kristine Labiao",
-    role: "Student - Developer - Dreamer",
-    location: "Cebu City, Philippines",
-    bio: "I am a passionate student who enjoys building websites, learning new technologies, and improving my skills every day. I enjoy creating projects, solving problems, and turning ideas into reality through technology.",
-    school: "Bachelor of Science in Computer Science",
-    skills: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Problem Solving", "Communication", "Teamwork", "Time Management"],
-    image: "Paradise.png",
+    password: "kristine0127",
+    name: "Kristine Labiao", // Keeping the name as requested
+    role: "Office Administration Student",
+    location: "Patnongon, Antique, Philippines",
+    bio: "I am a dedicated student pursuing a Bachelor of Science in Office Administration. I am passionate about developing strong organizational, communication, and administrative skills to contribute effectively to any professional environment. I enjoy learning about efficient office management and utilizing technology to streamline operations.",
+    school: "Bachelor of Science in Office Administration",
+    skills: ["Office Management", "Communication", "Record Keeping", "Customer Service", "Administrative Support", "Microsoft Office Suite", "Organizational Skills", "Time Management"],
+    image: "kristine1.jpg",
     goals: [
-      ["terminal", "Master Full-Stack Development"],
-      ["psychology", "Solve Complex Tech Problems"],
-      ["rocket_launch", "Launch Innovative Applications"],
-      ["groups", "Collaborate with Global Tech Teams"]
+      ["school", "Excel in Office Administration studies"],
+      ["work", "Secure a fulfilling administrative career"],
+      ["family_restroom", "Support my family's well-being"],
+      ["flag", "Achieve professional certifications"]
     ],
     gallery: [
-      ["Paradise.png", "Paradise View", "A peaceful place where I find inspiration for my coding projects and designs."],
-      ["best_friends.jpg", "Tech Buddies", "Spending time with friends who share my passion for technology and growth."],
-      ["classmate.jpg", "CS Batch Memories", "Moments shared with my computer science classmates during our long study sessions."],
-      ["friends.jpg", "Weekend Chill", "Taking a break from the screen to enjoy great food and company with my closest friends."]
+      ["kristine1.jpg", "Serene Portrait", "A moment of calm reflection."],
+      ["kristine2.jpg", "Campus Exploration", "Exploring new places and environments."],
+      ["kristine3.jpg", "Vista Cafe Evenings", "Enjoying a cozy evening at Vista Cafe."],
+      ["kristine4.jpg", "Nature Retreat Cabins", "Nature's embrace at a peaceful retreat."],
+      ["kristine5.jpg", "Festival Vibrance", "Experiencing vibrant local culture."],
+      ["kristine6.jpg", "Anyap Falls Adventure", "Discovering the beauty of Anyap Falls."],
+      ["kristine7.jpg", "Evening Balcony Views", "Relaxing under the night sky."],
+      ["kristine8.jpg", "Cityscape Dynamics", "Cityscapes and urban exploration."],
+      ["kristine9.jpg", "Sky & Sea Collection", "Capturing the beauty of sunsets and seascapes."],
+      ["kristine10.jpg", "Hala Bira, Iloilo!", "Capturing the vibrant energy and festival spirit of Iloilo City at night."],
+      ["kristine11.jpg", "Friends Under the Stars", "Cherished moments with friends."]
     ],
     hobbies: [
-      ["code", "Coding", "Building websites and applications while continuously learning new technologies."],
-      ["menu_book", "Reading", "Learning through books, articles, and educational resources."],
-      ["camera_alt", "Photography", "Capturing beautiful moments and creating memories through photos."],
-      ["sports_basketball", "Sports", "Playing basketball and maintaining an active lifestyle."]
+      ["menu_book", "Reading", "Reading books and articles to expand knowledge."],
+      ["local_cafe", "Coffee Enthusiast", "Enjoying coffee and quiet moments."],
+      ["travel_explore", "Exploring New Places", "Exploring new places and cultures."],
+      ["fitness_center", "Staying Active", "Staying active and maintaining well-being."]
     ],
     music: [
-      ["music_note", "Favorite Songs", "Soft pop and relaxing instrumentals for focus."],
-      ["headphones", "Listening Time", "Music helps during coding sessions and study time."],
-      ["queue_music", "Playlist Mood", "Calm, uplifting, and motivational tracks."]
+      ["local_cafe", "I Love Coffee", "Sipping on my favorite brew while listening to calming acoustic melodies."],
+      ["music_note", "Cafe Playlist", "Soft jazz and lo-fi beats that complement the perfect coffee shop vibe."],
+      ["headphones", "Brew & Relax", "The best music to enjoy during a coffee break or while focusing on work."],
+      ["emoji_food_beverage", "Morning Ritual", "Starting the day right with a hot cup and motivational instrumentals."],
+      ["cake", "Sweet Harmony", "A sweet treat paired with soulful melodies for a perfect afternoon break."]
     ],
+    musicIcon: "local_cafe",
+    musicLabel: "I Love Coffee",
+    musicIntro: "Where caffeine meets rhythm — my favorite blends and tunes.",
     contact: [
-      ["email", "Email", "kristine@example.com"],
-      ["call", "Phone", "09000000000"],
-      ["language", "Facebook", "facebook.com/kristine"]
+      ["email", "Email", "kristine12@gmail.com"],
+      ["call", "Phone", "09295362006"],
+      ["language", "Facebook", "facebook.com/kristine"], // Assuming this should still be a link
+      ["alternate_email", "Instagram", "_itslovekrstne"] // Displaying handle, not a link
     ],
     bannerGradient: "linear-gradient(to right, #6366F1, #EC4899)",
-    themeBadge: "CREATIVE DEVELOPER"
+    bannerTextColor: "#FFFFFF", // White text for dark banner
+    themeBadgeTextColor: "#FFFFFF", // White text for badge
+    themeBadge: "OFFICE ADMINISTRATION"
   }
 };
 
 const state = {
   currentUser: null,
-  currentPage: "about"
+  currentPage: "about",
+  isTransitioning: false
 };
 
 const elements = {
@@ -122,24 +143,81 @@ const elements = {
   sidebarPhoto: document.getElementById("sidebarPhoto"),
   topAvatar: document.getElementById("topAvatar"),
   topAvatarButton: document.getElementById("topAvatarButton"),
+  menuBtn: document.getElementById("menuBtn"),
+  logoutBtn: document.getElementById("logoutBtn"),
+  cancelLogout: document.getElementById("cancelLogout"),
+  confirmLogout: document.getElementById("confirmLogout"),
 };
 
 function signIn(userKey) {
-  state.currentUser = users[userKey];
-  state.currentPage = "about";
+  const user = users[userKey];
+  
+  // 1. High-level sensitization sequence (Welcome Overlay)
+  const welcomeOverlay = document.createElement("div");
+  welcomeOverlay.style.cssText = `
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 10000; opacity: 0; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  `;
 
-  elements.sidebarName.textContent = state.currentUser.name;
-  elements.sidebarPhoto.src = state.currentUser.image;
-  elements.topAvatar.src = state.currentUser.image;
+  welcomeOverlay.innerHTML = `
+    <div style="text-align: center; transform: translateY(20px); transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);" id="welcomeContent">
+      <img src="${user.image}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 24px;">
+      <h1 style="font-size: 2.2rem; color: #0f172a; font-weight: 700; margin: 0; letter-spacing: -0.02em;">Welcome back,</h1>
+      <p style="font-size: 1.4rem; color: #64748b; margin: 8px 0 0 0;">${user.name}</p>
+    </div>
+  `;
 
-  renderPage("about");
-  elements.loginScreen.classList.remove("active");
-  elements.portfolioScreen.classList.add("active");
-  document.title = `${state.currentUser.name} | Portfolio Connect`;
+  document.body.appendChild(welcomeOverlay);
 
-  elements.loginMessage.textContent = "";
-  elements.loginForm.reset();
-  elements.passwordInput.type = "password";
+  // Start sensitization animations
+  requestAnimationFrame(() => {
+    welcomeOverlay.style.opacity = "1";
+    welcomeOverlay.querySelector("#welcomeContent").style.transform = "translateY(0)";
+  });
+
+  // Blur the background login screen for a premium feel
+  elements.loginScreen.style.filter = "blur(15px) scale(1.05)";
+  elements.loginScreen.style.transition = "filter 1.5s ease, transform 1.5s ease";
+
+  setTimeout(() => {
+    // 2. Prepare state while user is looking at the welcome message
+    state.currentUser = user;
+    state.currentPage = "about";
+    pageLabels.music = user.musicLabel || "Music";
+    
+    elements.sidebarName.textContent = user.name;
+    elements.sidebarPhoto.src = user.image;
+    elements.topAvatar.src = user.image;
+
+    document.querySelectorAll('[data-page="music"]').forEach(el => {
+      const icon = el.querySelector('.material-icons');
+      const text = el.querySelector('span:not(.material-icons)') || 
+                   Array.from(el.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
+      if (icon) icon.textContent = user.musicIcon || "music_note";
+      if (text) text.textContent = user.musicLabel || "Music";
+    });
+
+    renderPage("about");
+
+    // 3. Final professional transition into the app
+    welcomeOverlay.style.opacity = "0";
+    elements.loginScreen.classList.remove("active"); 
+    elements.portfolioScreen.classList.add("active");
+    elements.loginScreen.style.filter = "none";
+    elements.loginScreen.style.transform = "none";
+    document.title = `${user.name} | Portfolio Connect`;
+
+    setTimeout(() => {
+      welcomeOverlay.remove();
+      elements.loginMessage.textContent = "";
+      elements.loginForm.reset();
+      elements.passwordInput.type = "password";
+    }, 800);
+  }, 2400); // 2.4s display time for the welcome sequence
 }
 
 function signOut() {
@@ -152,22 +230,57 @@ function signOut() {
 }
 
 function renderPage(page) {
-  if (!state.currentUser) return;
+  if (!state.currentUser || !pageLabels[page] || state.isTransitioning) return;
 
-  state.currentPage = page;
-  elements.pageTitle.textContent = pageLabels[page];
-  updateActiveNavigation(page);
+  state.isTransitioning = true;
 
-  const templates = {
-    about: renderAboutPage,
-    travel: renderTravelPage,
-    hobbies: renderHobbiesPage,
-    music: renderMusicPage,
-    contact: renderContactPage
-  };
+  // Phase 1: Exit Animation for the container
+  elements.content.style.opacity = "0";
+  elements.content.style.transform = "translateY(-12px)";
+  elements.content.style.transition = "opacity 0.3s ease-in, transform 0.3s ease-in";
 
-  elements.content.innerHTML = templates[page]();
-  closeSidebar();
+  setTimeout(() => {
+    state.currentPage = page;
+    elements.pageTitle.textContent = pageLabels[page];
+
+    const templates = {
+      about: renderAboutPage,
+      travel: renderTravelPage,
+      hobbies: renderHobbiesPage,
+      music: renderMusicPage,
+      contact: renderContactPage,
+    };
+
+    updateActiveNavigation(page);
+    elements.content.innerHTML = templates[page]();
+    closeSidebar();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Phase 2: Prepare new elements for staggered entry
+    const cards = elements.content.querySelectorAll(".page");
+    cards.forEach(card => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(24px)";
+      card.style.transition = "opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+    });
+
+    // Reveal the container
+    elements.content.style.opacity = "1";
+    elements.content.style.transform = "translateY(0)";
+
+    // Execute staggered reveal of individual components
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, index * 70); // 70ms stagger for a high-end feel
+    });
+
+    // Release transition lock after animations finish
+    setTimeout(() => {
+      state.isTransitioning = false;
+    }, (cards.length * 70) + 600);
+  }, 300);
 }
 
 function updateActiveNavigation(page) {
@@ -188,9 +301,9 @@ function renderAboutPage() {
       <div class="profile-banner" style="background: ${user.bannerGradient}">
         <img class="profile-photo-banner" src="${user.image}" alt="${user.name}">
         <div class="profile-info">
-          <h2 class="name" style="margin:0">${user.name}</h2>
-          <div class="location" style="color:rgba(255,255,255,0.8)">${user.location}</div>
-          <div class="theme-badge">
+          <h2 class="name" style="margin:0; color: ${user.bannerTextColor}">Hi, I'm ${user.name}</h2>
+          <div class="location" style="color: ${user.bannerTextColor}; opacity: 0.85">${user.location}</div>
+          <div class="theme-badge" style="color: ${user.themeBadgeTextColor}; border-color: ${user.themeBadgeTextColor};">
             ${user.themeBadge}
           </div>
         </div>
@@ -227,7 +340,7 @@ function renderTravelPage() {
   const gallery = state.currentUser.gallery || []; 
 
   return `
-    ${renderSectionIntro("photo_library", `${state.currentUser.name}'s Gallery`, "Meaningful memories captured with friends and classmates.")}
+    ${renderSectionIntro("photo_library", "My Gallery", "Meaningful memories captured with friends and classmates.")}
     <div class="gallery-grid">
       ${gallery.map(([image, title, description]) => `
         <article class="gallery-card page">
@@ -253,8 +366,10 @@ function renderHobbiesPage() {
 }
 
 function renderMusicPage() {
+  const user = state.currentUser;
+  
   return `
-    ${renderSectionIntro("music_note", "Music", "Songs and playlists that fit the vibe.")}
+    ${renderSectionIntro(user.musicIcon || "music_note", user.musicLabel || "Music", user.musicIntro || "Songs and playlists that fit the vibe.")}
     <div class="item-list">
       ${state.currentUser.music.map(([icon, title, description]) => renderIconItem(icon, title, description)).join("")}
     </div>
@@ -332,7 +447,14 @@ function getContactHref(title, value) {
   const normalizedValue = value.trim();
 
   if (normalizedTitle.includes("facebook")) {
-    return "";
+    if (normalizedValue.startsWith("facebook.com")) {
+      return `https://${normalizedValue}`;
+    }
+    return `https://facebook.com/${normalizedValue.replace(/\s+/g, "")}`;
+  }
+
+  if (normalizedTitle.includes("instagram")) {
+    return ""; // Instagram handle should not be a clickable link as per request
   }
 
   if (normalizedTitle.includes("email")) {
@@ -398,15 +520,51 @@ document.getElementById("forgotLink").addEventListener("click", (event) => {
   elements.loginMessage.textContent = "Please contact the portfolio owner to reset access.";
 });
 
-document.getElementById("menuBtn").addEventListener("click", openSidebar);
-elements.sidebarOverlay.addEventListener("click", closeSidebar);
-elements.topAvatarButton.addEventListener("click", openSidebar);
+// Safe Event Listener Attachment to prevent script crashes
+const safeListen = (el, event, fn) => el && el.addEventListener(event, fn);
 
-elements.modalOverlay.addEventListener("click", closeLogoutDialog);
-document.getElementById("cancelLogout").addEventListener("click", closeLogoutDialog);
-document.getElementById("confirmLogout").addEventListener("click", signOut);
-document.getElementById("logoutBtn").addEventListener("click", openLogoutDialog);
+safeListen(elements.menuBtn, "click", openSidebar);
+safeListen(elements.sidebarOverlay, "click", closeSidebar);
+safeListen(elements.topAvatarButton, "click", openSidebar);
+safeListen(elements.modalOverlay, "click", closeLogoutDialog);
+safeListen(elements.cancelLogout, "click", closeLogoutDialog);
+safeListen(elements.confirmLogout, "click", signOut);
+safeListen(elements.logoutBtn, "click", openLogoutDialog);
 
 document.querySelectorAll(".nav-item, .menu-item[data-page]").forEach((button) => {
   button.addEventListener("click", () => renderPage(button.dataset.page));
 });
+
+/**
+ * High-Level Sticky Navigation
+ * Ensures the header is context-aware: hides on scroll down, reveals on scroll up.
+ */
+function initStickyHeader() {
+  if (!elements.topAvatarButton) return;
+  const header = elements.topAvatarButton.closest('header') || elements.topAvatarButton.parentElement;
+  if (!header) return;
+
+  let lastScroll = 0;
+  header.style.cssText += 'position: sticky; top: 0; z-index: 1000; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, backdrop-filter 0.3s ease;';
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > 10) {
+      header.style.background = 'rgba(255, 255, 255, 0.75)';
+      header.style.backdropFilter = 'blur(20px) saturate(160%)';
+    } else {
+      header.style.background = 'transparent';
+      header.style.backdropFilter = 'none';
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 250) {
+      header.style.transform = 'translateY(-100%)';
+    } else {
+      header.style.transform = 'translateY(0)';
+    }
+    lastScroll = Math.max(0, currentScroll);
+  }, { passive: true });
+}
+
+initStickyHeader();
