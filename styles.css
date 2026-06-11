@@ -45,23 +45,37 @@ a {
 }
 
 .phone-shell {
-  min-height: 100vh;
   display: grid;
   place-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .app {
-  width: min(390px, 100%);
-  min-height: min(844px, 100vh);
+  width: 100%; /* Fill the fixed phone-shell */
+  height: 100%;
+  min-height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Lock the main container to prevent UI leakage */
+  overflow-x: hidden;
   background: var(--app-bg);
   box-shadow: 0 0 0 1px rgba(60, 64, 67, 0.08), 0 24px 70px rgba(60, 64, 67, 0.18);
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.app::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 .screen {
   display: none;
-  min-height: min(844px, 100vh);
+  height: 100%;
+  width: 100%;
+  overflow-y: auto; /* Allow individual screens to scroll independently */
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen::-webkit-scrollbar {
+  display: none;
 }
 
 .screen.active {
@@ -74,6 +88,9 @@ a {
   justify-content: center;
   padding: 24px;
   background: var(--surface);
+  height: 100%;
+  width: 100%;
+  z-index: 10; /* Keep login above hidden content */
 }
 
 .login-screen.active {
@@ -245,8 +262,14 @@ a {
 }
 
 .portfolio-screen {
-  padding-bottom: 78px;
+  display: none;
+  flex-direction: column;
+  min-height: 100%;
   background: var(--app-bg);
+}
+
+.portfolio-screen.active {
+  display: flex;
 }
 
 .topbar {
@@ -297,7 +320,8 @@ a {
 }
 
 .content {
-  padding: 14px;
+  flex: 1; /* Pushes the bottom nav down */
+  padding: 16px;
 }
 
 .info-card,
@@ -566,14 +590,13 @@ a {
 }
 
 .bottom-nav {
-  width: min(390px, 100%);
-  position: fixed;
-  left: 50%;
+  width: 100%; /* Fill the parent .app */
+  position: sticky; /* Keeps the nav bar visible at the bottom while scrolling */
+  left: 0;
   bottom: 0;
   z-index: 30;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  transform: translateX(-50%);
   background: #fff;
   border-top: 1px solid var(--line-soft);
 }
@@ -598,14 +621,14 @@ a {
 }
 
 .nav-item.active .material-icons {
-  width: 52px;
-  padding: 2px 0;
+  width: 64px;
+  padding: 4px 0;
   background: #e8f0fe;
   border-radius: 999px;
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 40;
   pointer-events: none;
@@ -621,8 +644,8 @@ a {
 
 .sidebar {
   width: 280px;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: -280px;
   z-index: 50;
@@ -693,7 +716,7 @@ a {
 
 .dialog {
   width: min(320px, calc(100% - 32px));
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 50%;
   z-index: 60;
@@ -761,21 +784,5 @@ a {
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@media (max-width: 420px) {
-  .phone-shell {
-    display: block;
-  }
-
-  .app,
-  .bottom-nav {
-    width: 100%;
-  }
-
-  .app,
-  .screen {
-    min-height: 100vh;
   }
 }

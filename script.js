@@ -60,7 +60,13 @@ const users = {
     bannerGradient: "linear-gradient(to right, #3ac78e, #3B82F6)", // Vibrant gradient for user interaction
     bannerTextColor: "#FFFFFF", // White text for light banner
     themeBadgeTextColor: "#FFFFFF", // White text for badge
-    themeBadge: "OFFICE ADMINISTRATION"
+    themeBadge: "OFFICE ADMINISTRATION",
+    sectionIcons: { about: "person", travel: "collections", hobbies: "auto_awesome", contact: "contact_page", music: "music_note" },
+    uiConfig: {
+      navOrder: ['about', 'travel', 'hobbies', 'music', 'contact'],
+      staggerDelay: 70,
+      useMotion: true
+    }
   },
   kristine: {
     password: "kristine0127",
@@ -115,7 +121,13 @@ const users = {
     bannerGradient: "linear-gradient(to right, #6366F1, #EC4899)",
     bannerTextColor: "#FFFFFF", // White text for dark banner
     themeBadgeTextColor: "#FFFFFF", // White text for badge
-    themeBadge: "OFFICE ADMINISTRATION"
+    themeBadge: "OFFICE ADMINISTRATION",
+    sectionIcons: { about: "history_edu", travel: "photo_library", hobbies: "volunteer_activism", contact: "alternate_email", music: "local_cafe" },
+    uiConfig: {
+      navOrder: ['about', 'travel', 'hobbies', 'music'],
+      staggerDelay: 60, // Professional staggered entrance
+      useMotion: false  // Keep movement disabled for her specific design
+    }
   }
 };
 
@@ -126,6 +138,7 @@ const state = {
 };
 
 const elements = {
+  app: document.querySelector(".app"),
   loginForm: document.getElementById("loginForm"),
   loginScreen: document.getElementById("loginScreen"),
   portfolioScreen: document.getElementById("portfolioScreen"),
@@ -155,7 +168,7 @@ function signIn(userKey) {
   // 1. High-level sensitization sequence (Welcome Overlay)
   const welcomeOverlay = document.createElement("div");
   welcomeOverlay.style.cssText = `
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -171,7 +184,7 @@ function signIn(userKey) {
     </div>
   `;
 
-  document.body.appendChild(welcomeOverlay);
+  (document.querySelector('.app') || document.body).appendChild(welcomeOverlay);
 
   // Start sensitization animations
   requestAnimationFrame(() => {
@@ -187,18 +200,52 @@ function signIn(userKey) {
     // 2. Prepare state while user is looking at the welcome message
     state.currentUser = user;
     state.currentPage = "about";
-    pageLabels.music = user.musicLabel || "Music";
     
     elements.sidebarName.textContent = user.name;
     elements.sidebarPhoto.src = user.image;
     elements.topAvatar.src = user.image;
 
-    document.querySelectorAll('[data-page="music"]').forEach(el => {
+    // Navigation UI update: handle labels, icons and order
+    pageLabels.music = user.musicLabel || "Music";
+    const navOrder = user.uiConfig.navOrder;
+    const navContainers = new Set();
+
+    document.querySelectorAll('.nav-item, .menu-item[data-page]').forEach(el => {
+      const page = el.getAttribute('data-page');
+      if (el.parentElement) navContainers.add(el.parentElement);
+
+      // Update Labels and Icons
+      const textEl = el.querySelector('span:not(.material-icons)') || 
+                     Array.from(el.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
+      if (textEl && pageLabels[page]) textEl.textContent = pageLabels[page];
+
       const icon = el.querySelector('.material-icons');
-      const text = el.querySelector('span:not(.material-icons)') || 
-                   Array.from(el.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
-      if (icon) icon.textContent = user.musicIcon || "music_note";
-      if (text) text.textContent = user.musicLabel || "Music";
+      if (icon && user.sectionIcons[page]) icon.textContent = user.sectionIcons[page];
+
+      // Professional internal alignment
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.gap = '10px';
+    });
+
+    // Strictly organize navigation order and visibility
+    navContainers.forEach(container => {
+      // Professional Alignment Fix: Adjust bottom-nav grid to fit the specific user's item count
+      if (container.classList.contains('bottom-nav')) {
+        container.style.gridTemplateColumns = `repeat(${navOrder.length}, 1fr)`;
+      }
+
+      navOrder.forEach(pageId => {
+        const item = container.querySelector(`[data-page="${pageId}"]`);
+        if (item) {
+          container.appendChild(item);
+          item.style.display = '';
+        }
+      });
+      Array.from(container.children).forEach(child => {
+        const link = child.hasAttribute('data-page') ? child : child.querySelector('[data-page]');
+        if (link && !navOrder.includes(link.getAttribute('data-page'))) child.style.display = 'none';
+      });
     });
 
     renderPage("about");
@@ -232,12 +279,13 @@ function signOut() {
 function renderPage(page) {
   if (!state.currentUser || !pageLabels[page] || state.isTransitioning) return;
 
+  const config = state.currentUser.uiConfig;
   state.isTransitioning = true;
 
   // Phase 1: Exit Animation for the container
   elements.content.style.opacity = "0";
-  elements.content.style.transform = "translateY(-12px)";
-  elements.content.style.transition = "opacity 0.3s ease-in, transform 0.3s ease-in";
+  if (config.useMotion) elements.content.style.transform = "translateY(-8px) scale(0.98)";
+  elements.content.style.transition = config.useMotion ? "opacity 0.25s cubic-bezier(0.4, 0, 1, 1), transform 0.25s cubic-bezier(0.4, 0, 1, 1)" : "opacity 0.2s ease-in";
 
   setTimeout(() => {
     state.currentPage = page;
@@ -254,33 +302,39 @@ function renderPage(page) {
     updateActiveNavigation(page);
     elements.content.innerHTML = templates[page]();
     closeSidebar();
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const scrollTarget = elements.portfolioScreen || window;
+    scrollTarget.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Phase 2: Prepare new elements for staggered entry
+    // Phase 2: Prepare new elements for entry
     const cards = elements.content.querySelectorAll(".page");
     cards.forEach(card => {
       card.style.opacity = "0";
-      card.style.transform = "translateY(24px)";
-      card.style.transition = "opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+      if (config.useMotion) {
+        card.style.transform = "translateY(15px) scale(0.99)";
+        card.style.transition = "opacity 0.5s cubic-bezier(0, 0, 0.2, 1), transform 0.5s cubic-bezier(0, 0, 0.2, 1)";
+      } else {
+        // Smooth fade for non-motion profiles like Kristine's
+        card.style.transition = "opacity 0.4s ease-out";
+      }
     });
 
     // Reveal the container
     elements.content.style.opacity = "1";
-    elements.content.style.transform = "translateY(0)";
+    if (config.useMotion) elements.content.style.transform = "translateY(0) scale(1)";
 
     // Execute staggered reveal of individual components
     cards.forEach((card, index) => {
       setTimeout(() => {
         card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      }, index * 70); // 70ms stagger for a high-end feel
+        if (config.useMotion) card.style.transform = "translateY(0) scale(1)";
+      }, index * config.staggerDelay);
     });
 
     // Release transition lock after animations finish
     setTimeout(() => {
       state.isTransitioning = false;
-    }, (cards.length * 70) + 600);
-  }, 300);
+    }, (cards.length * config.staggerDelay) + 500);
+  }, 250); // Consistent delay for the "Feature Switch" feel
 }
 
 function updateActiveNavigation(page) {
@@ -309,8 +363,8 @@ function renderAboutPage() {
         </div>
       </div>
     </section>
-    ${renderInfoCard("school", "Biography", user.bio)}
-    ${renderInfoCard("school", "Education", user.school)}
+    ${renderInfoCard(user.sectionIcons?.about || "school", "Biography", user.bio)}
+    ${renderInfoCard(user.sectionIcons?.about || "school", "Education", user.school)}
     <section class="info-card page">
       <h3 class="section-title"><span class="material-icons">flag</span>My Goals in Life</h3>
       <div class="goal-grid">
@@ -340,7 +394,7 @@ function renderTravelPage() {
   const gallery = state.currentUser.gallery || []; 
 
   return `
-    ${renderSectionIntro("photo_library", "My Gallery", "Meaningful memories captured with friends and classmates.")}
+    ${renderSectionIntro(state.currentUser.sectionIcons?.travel || "photo_library", "My Gallery", "Meaningful memories captured with friends and classmates.")}
     <div class="gallery-grid">
       ${gallery.map(([image, title, description]) => `
         <article class="gallery-card page">
@@ -358,7 +412,7 @@ function renderTravelPage() {
 
 function renderHobbiesPage() {
   return `
-    ${renderSectionIntro("interests", "Hobbies", "Things I enjoy in daily life.")}
+    ${renderSectionIntro(state.currentUser.sectionIcons?.hobbies || "interests", "Hobbies", "Things I enjoy in daily life.")}
     <div class="item-list">
       ${state.currentUser.hobbies.map(([icon, title, description]) => renderIconItem(icon, title, description)).join("")}
     </div>
@@ -369,7 +423,7 @@ function renderMusicPage() {
   const user = state.currentUser;
   
   return `
-    ${renderSectionIntro(user.musicIcon || "music_note", user.musicLabel || "Music", user.musicIntro || "Songs and playlists that fit the vibe.")}
+    ${renderSectionIntro(user.sectionIcons?.music || "music_note", user.musicLabel || "Music", user.musicIntro || "Songs and playlists that fit the vibe.")}
     <div class="item-list">
       ${state.currentUser.music.map(([icon, title, description]) => renderIconItem(icon, title, description)).join("")}
     </div>
@@ -378,7 +432,7 @@ function renderMusicPage() {
 
 function renderContactPage() {
   return `
-    ${renderSectionIntro("mail", "Contact", "Ways to get in touch.")}
+    ${renderSectionIntro(state.currentUser.sectionIcons?.contact || "mail", "Contact", "Ways to get in touch.")}
     <div class="item-list">
       ${state.currentUser.contact.map(([icon, title, value]) => renderContactItem(icon, title, value)).join("")}
     </div>
@@ -475,6 +529,8 @@ function getContactHref(title, value) {
 function openSidebar() {
   elements.sidebar.classList.add("open");
   elements.sidebarOverlay.classList.add("open");
+  elements.sidebar.style.zIndex = "2000";
+  elements.sidebarOverlay.style.zIndex = "1999";
 }
 
 function closeSidebar() {
@@ -544,27 +600,52 @@ function initStickyHeader() {
   const header = elements.topAvatarButton.closest('header') || elements.topAvatarButton.parentElement;
   if (!header) return;
 
+  const scrollContainer = elements.portfolioScreen || window;
   let lastScroll = 0;
   header.style.cssText += 'position: sticky; top: 0; z-index: 1000; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, backdrop-filter 0.3s ease;';
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  scrollContainer.addEventListener('scroll', () => {
+    const currentScroll = scrollContainer === window ? 
+      Math.max(0, window.pageYOffset || document.documentElement.scrollTop) : 
+      scrollContainer.scrollTop;
 
-    if (currentScroll > 10) {
+    if (currentScroll > 5) {
       header.style.background = 'rgba(255, 255, 255, 0.75)';
       header.style.backdropFilter = 'blur(20px) saturate(160%)';
+      header.style.borderBottom = '1px solid var(--line-soft)';
     } else {
-      header.style.background = 'transparent';
+      header.style.background = '#ffffff';
       header.style.backdropFilter = 'none';
+      header.style.borderBottom = '1px solid transparent';
     }
 
-    if (currentScroll > lastScroll && currentScroll > 250) {
-      header.style.transform = 'translateY(-100%)';
-    } else {
-      header.style.transform = 'translateY(0)';
-    }
+    header.style.transform = 'translateY(0)';
     lastScroll = Math.max(0, currentScroll);
   }, { passive: true });
 }
 
+function setupMobileAdaptability() {
+    const updateVH = () => {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Optimized resize handling for mobile orientation changes
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateVH, 150);
+    }, { passive: true });
+
+    window.addEventListener('orientationchange', () => {
+        setTimeout(updateVH, 200); // Small delay to allow browser layout to settle
+    }, { passive: true });
+
+    updateVH();
+
+    // Enhance mobile touch feedback responsiveness
+    document.addEventListener('touchstart', () => {}, { passive: true });
+}
+
+setupMobileAdaptability();
 initStickyHeader();
