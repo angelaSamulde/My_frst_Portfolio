@@ -22,7 +22,7 @@ const defaultGallery = [
 
 const users = {
   angela: {
-    password: "angelaBOA",
+    password: "123",
     name: "Angela Samulde",
     role: "Office Administration Student",
     location: "Lau-an, Antique, Philippines",
@@ -69,7 +69,7 @@ const users = {
     }
   },
   kristine: {
-    password: "kristine0127",
+    password: "456",
     name: "Kristine Labiao", // Keeping the name as requested
     role: "Office Administration Student",
     location: "Patnongon, Antique, Philippines",
