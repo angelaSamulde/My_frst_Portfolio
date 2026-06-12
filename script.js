@@ -72,7 +72,7 @@ const users = {
     password: "456",
     name: "Kristine Labiao", // Keeping the name as requested
     role: "Office Administration Student",
-    location: "Patnongon, Antique, Philippines",
+    location: "Bugasong, Antique, Philippines",
     bio: "I am a dedicated student pursuing a Bachelor of Science in Office Administration. I am passionate about developing strong organizational, communication, and administrative skills to contribute effectively to any professional environment. I enjoy learning about efficient office management and utilizing technology to streamline operations.",
     school: "Bachelor of Science in Office Administration",
     skills: ["Office Management", "Communication", "Record Keeping", "Customer Service", "Administrative Support", "Microsoft Office Suite", "Organizational Skills", "Time Management"],
