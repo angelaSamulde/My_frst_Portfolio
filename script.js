@@ -1,651 +1,950 @@
-const pageLabels = {
-  about: "About Me",
-  travel: "Gallery",
-  hobbies: "Hobbies",
-  music: "Music",
-  contact: "Contact"
-};
-
-const defaultGoals = [
-  ["school", "Finish my studies"],
-  ["work", "Have a successful career"],
-  ["family_restroom", "Help my family"],
-  ["flag", "Build a stable future"]
-];
-
-const defaultGallery = [
-  ["best_friends.jpg", "Best Friends", "A collection of unforgettable moments shared with my closest friends. These memories represent friendship, trust, support, and happiness throughout my journey."],
-  ["classmate.jpg", "Classmate Moments", "Captured during school activities and classroom experiences. These moments reflect teamwork, learning, cooperation, and personal growth with my classmates."],
-  ["friends.jpg", "Friends", "A special memory with friends who bring joy, encouragement, and positivity into my life. These friendships make every experience more meaningful."],
-  ["outing_with_friends.jpg", "Outing With Friends", "A memorable outing filled with laughter, adventure, and bonding. These experiences strengthened our friendship and created lasting memories."]
-];
-
 const users = {
-  angela: {
-    password: "123",
-    name: "Angela Samulde",
-    role: "Office Administration Student",
-    location: "Lau-an, Antique, Philippines",
-    bio: "“Choose Office Administration for a better future!”\n\nOffice Administration is a course that teaches office management, communication, computer, and organizational skills. It prepares students for jobs like office assistant, secretary, and administrative officer. It helps build professionalism and skills for a successful career.",
-    school: "Bachelor of Science in Office Administration",
-    skills: ["Communication skills", "Office management", "Filing and record keeping", "Customer service", "Administrative support", "Computer literacy"],
-    image: "profile.jpg",
-    goals: [
-      ["school", "Finish my studies"],
-      ["work", "Have a successful career"],
-      ["family_restroom", "Help my family"],
-      ["flag", "Travel to different countries"]
-    ],
-    gallery: defaultGallery,
-    hobbies: [
-      ["music_note", "Listening to music", "Enjoying songs that bring comfort, focus, and relaxation."],
-      ["wb_twilight", "Watching sunsets", "Appreciating peaceful sunset views and quiet moments."],
-      ["travel_explore", "Traveling", "Exploring new places and creating meaningful experiences."],
-      ["church", "Visiting unfamiliar churches", "Discovering peaceful churches and learning from new places."],
-      ["menu_book", "Reading Wattpad stories", "Enjoying Wattpad stories during free time."]
-    ],
-    music: [
-      ["music_note", "Favorite Songs", "Soft pop, worship songs, and relaxing music that match her calm personality."],
-      ["headphones", "Listening Time", "Music helps me relax, reflect, and stay inspired during busy school days."],
-      ["queue_music", "Playlist Mood", "Peaceful, meaningful, and uplifting songs for studying, traveling, and quiet moments."]
-    ],
-    musicIcon: "music_note",
-    musicLabel: "Music",
-    musicIntro: "Songs and playlists that fit the vibe.",
-    contact: [
-      ["email", "Email", "samuldeangela99@gmail.com"],
-      ["call", "Phone", "09688369563"],
-      ["language", "Facebook", "facebook.com/angela samulde"]
-    ],
-    bannerGradient: "linear-gradient(to right, #3ac78e, #3B82F6)", // Vibrant gradient for user interaction
-    bannerTextColor: "#FFFFFF", // White text for light banner
-    themeBadgeTextColor: "#FFFFFF", // White text for badge
-    themeBadge: "OFFICE ADMINISTRATION",
-    sectionIcons: { about: "person", travel: "collections", hobbies: "auto_awesome", contact: "contact_page", music: "music_note" },
-    uiConfig: {
-      navOrder: ['about', 'travel', 'hobbies', 'music', 'contact'],
-      staggerDelay: 70,
-      useMotion: true
-    }
-  },
-  kristine: {
-    password: "456",
-    name: "Kristine Labiao", // Keeping the name as requested
-    role: "Office Administration Student",
-    location: "Bugasong, Antique, Philippines",
-    bio: "I am a dedicated student pursuing a Bachelor of Science in Office Administration. I am passionate about developing strong organizational, communication, and administrative skills to contribute effectively to any professional environment. I enjoy learning about efficient office management and utilizing technology to streamline operations.",
-    school: "Bachelor of Science in Office Administration",
-    skills: ["Office Management", "Communication", "Record Keeping", "Customer Service", "Administrative Support", "Microsoft Office Suite", "Organizational Skills", "Time Management"],
-    image: "kristine1.jpg",
-    goals: [
-      ["school", "Excel in Office Administration studies"],
-      ["work", "Secure a fulfilling administrative career"],
-      ["family_restroom", "Support my family's well-being"],
-      ["flag", "Achieve professional certifications"]
-    ],
-    gallery: [
-      ["kristine1.jpg", "Serene Portrait", "A moment of calm reflection."],
-      ["kristine2.jpg", "Campus Exploration", "Exploring new places and environments."],
-      ["kristine3.jpg", "Vista Cafe Evenings", "Enjoying a cozy evening at Vista Cafe."],
-      ["kristine4.jpg", "Nature Retreat Cabins", "Nature's embrace at a peaceful retreat."],
-      ["kristine5.jpg", "Festival Vibrance", "Experiencing vibrant local culture."],
-      ["kristine6.jpg", "Anyap Falls Adventure", "Discovering the beauty of Anyap Falls."],
-      ["kristine7.jpg", "Evening Balcony Views", "Relaxing under the night sky."],
-      ["kristine8.jpg", "Cityscape Dynamics", "Cityscapes and urban exploration."],
-      ["kristine9.jpg", "Sky & Sea Collection", "Capturing the beauty of sunsets and seascapes."],
-      ["kristine10.jpg", "Hala Bira, Iloilo!", "Capturing the vibrant energy and festival spirit of Iloilo City at night."],
-      ["kristine11.jpg", "Friends Under the Stars", "Cherished moments with friends."]
-    ],
-    hobbies: [
-      ["menu_book", "Reading", "Reading books and articles to expand knowledge."],
-      ["local_cafe", "Coffee Enthusiast", "Enjoying coffee and quiet moments."],
-      ["travel_explore", "Exploring New Places", "Exploring new places and cultures."],
-      ["fitness_center", "Staying Active", "Staying active and maintaining well-being."]
-    ],
-    music: [
-      ["local_cafe", "I Love Coffee", "Sipping on my favorite brew while listening to calming acoustic melodies."],
-      ["music_note", "Cafe Playlist", "Soft jazz and lo-fi beats that complement the perfect coffee shop vibe."],
-      ["headphones", "Brew & Relax", "The best music to enjoy during a coffee break or while focusing on work."],
-      ["emoji_food_beverage", "Morning Ritual", "Starting the day right with a hot cup and motivational instrumentals."],
-      ["cake", "Sweet Harmony", "A sweet treat paired with soulful melodies for a perfect afternoon break."]
-    ],
-    musicIcon: "local_cafe",
-    musicLabel: "I Love Coffee",
-    musicIntro: "Where caffeine meets rhythm — my favorite blends and tunes.",
-    contact: [
-      ["email", "Email", "kristine12@gmail.com"],
-      ["call", "Phone", "09295362006"],
-      ["language", "Facebook", "facebook.com/kristine"], // Assuming this should still be a link
-      ["alternate_email", "Instagram", "_itslovekrstne"] // Displaying handle, not a link
-    ],
-    bannerGradient: "linear-gradient(to right, #6366F1, #EC4899)",
-    bannerTextColor: "#FFFFFF", // White text for dark banner
-    themeBadgeTextColor: "#FFFFFF", // White text for badge
-    themeBadge: "OFFICE ADMINISTRATION",
-    sectionIcons: { about: "history_edu", travel: "photo_library", hobbies: "volunteer_activism", contact: "alternate_email", music: "local_cafe" },
-    uiConfig: {
-      navOrder: ['about', 'travel', 'hobbies', 'music'],
-      staggerDelay: 60, // Professional staggered entrance
-      useMotion: false  // Keep movement disabled for her specific design
-    }
-  }
-};
-
-const state = {
-  currentUser: null,
-  currentPage: "about",
-  isTransitioning: false
-};
-
-const elements = {
-  app: document.querySelector(".app"),
-  loginForm: document.getElementById("loginForm"),
-  loginScreen: document.getElementById("loginScreen"),
-  portfolioScreen: document.getElementById("portfolioScreen"),
-  content: document.getElementById("content"),
-  loginMessage: document.getElementById("loginMessage"),
-  usernameInput: document.getElementById("username"),
-  passwordInput: document.getElementById("password"),
-  showPassword: document.getElementById("showPassword"),
-  pageTitle: document.getElementById("pageTitle"),
-  sidebar: document.getElementById("sidebar"),
-  sidebarOverlay: document.getElementById("sidebarOverlay"),
-  modalOverlay: document.getElementById("modalOverlay"),
-  logoutDialog: document.getElementById("logoutDialog"),
-  sidebarName: document.getElementById("sidebarName"),
-  sidebarPhoto: document.getElementById("sidebarPhoto"),
-  topAvatar: document.getElementById("topAvatar"),
-  topAvatarButton: document.getElementById("topAvatarButton"),
-  menuBtn: document.getElementById("menuBtn"),
-  logoutBtn: document.getElementById("logoutBtn"),
-  cancelLogout: document.getElementById("cancelLogout"),
-  confirmLogout: document.getElementById("confirmLogout"),
-};
-
-function signIn(userKey) {
-  const user = users[userKey];
-  
-  // 1. High-level sensitization sequence (Welcome Overlay)
-  const welcomeOverlay = document.createElement("div");
-  welcomeOverlay.style.cssText = `
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 10000; opacity: 0; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-  `;
-
-  welcomeOverlay.innerHTML = `
-    <div style="text-align: center; transform: translateY(20px); transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);" id="welcomeContent">
-      <img src="${user.image}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 24px;">
-      <h1 style="font-size: 2.2rem; color: #0f172a; font-weight: 700; margin: 0; letter-spacing: -0.02em;">Welcome back,</h1>
-      <p style="font-size: 1.4rem; color: #64748b; margin: 8px 0 0 0;">${user.name}</p>
-    </div>
-  `;
-
-  (document.querySelector('.app') || document.body).appendChild(welcomeOverlay);
-
-  // Start sensitization animations
-  requestAnimationFrame(() => {
-    welcomeOverlay.style.opacity = "1";
-    welcomeOverlay.querySelector("#welcomeContent").style.transform = "translateY(0)";
-  });
-
-  // Blur the background login screen for a premium feel
-  elements.loginScreen.style.filter = "blur(15px) scale(1.05)";
-  elements.loginScreen.style.transition = "filter 1.5s ease, transform 1.5s ease";
-
-  setTimeout(() => {
-    // 2. Prepare state while user is looking at the welcome message
-    state.currentUser = user;
-    state.currentPage = "about";
-    
-    elements.sidebarName.textContent = user.name;
-    elements.sidebarPhoto.src = user.image;
-    elements.topAvatar.src = user.image;
-
-    // Navigation UI update: handle labels, icons and order
-    pageLabels.music = user.musicLabel || "Music";
-    const navOrder = user.uiConfig.navOrder;
-    const navContainers = new Set();
-
-    document.querySelectorAll('.nav-item, .menu-item[data-page]').forEach(el => {
-      const page = el.getAttribute('data-page');
-      if (el.parentElement) navContainers.add(el.parentElement);
-
-      // Update Labels and Icons
-      const textEl = el.querySelector('span:not(.material-icons)') || 
-                     Array.from(el.childNodes).find(n => n.nodeType === 3 && n.textContent.trim());
-      if (textEl && pageLabels[page]) textEl.textContent = pageLabels[page];
-
-      const icon = el.querySelector('.material-icons');
-      if (icon && user.sectionIcons[page]) icon.textContent = user.sectionIcons[page];
-
-      // Professional internal alignment
-      el.style.display = 'flex';
-      el.style.alignItems = 'center';
-      el.style.gap = '10px';
-    });
-
-    // Strictly organize navigation order and visibility
-    navContainers.forEach(container => {
-      // Professional Alignment Fix: Adjust bottom-nav grid to fit the specific user's item count
-      if (container.classList.contains('bottom-nav')) {
-        container.style.gridTemplateColumns = `repeat(${navOrder.length}, 1fr)`;
-      }
-
-      navOrder.forEach(pageId => {
-        const item = container.querySelector(`[data-page="${pageId}"]`);
-        if (item) {
-          container.appendChild(item);
-          item.style.display = '';
+    zerahlen: {
+        password: "zerahlen016",
+        name: "Zerahlen Escoton",
+        badge: "",
+        paletteName: "Slate Horizon",
+        primary: "#2B2D42",
+        secondary: "#4B9CD3",
+        accent: "#c3e5f8",
+        surface: "#EAF3F8",
+        avatar: "",
+        headline: "Bugasong, Antique, Philippines",
+        education: "Bachelor of Science in Office Administration",
+        educationSub: "",
+        navigation: [
+            { key: "about", label: "About me", icon: "person" },
+            { key: "travel", label: "Travel", icon: "travel_explore" },
+            { key: "family", label: "Family", icon: "family_restroom" },
+            { key: "hobbies", label: "Hobbies", icon: "interests" }
+        ],
+        about: [
+            "My name is Zerahlen Escoton. I am a student who enjoys learning new things . I am friendly, responsible, and hardworking, and I always strive to do my best in everything I do.",
+            "I love traveling and exploring different places. My dream destinations are Paris, Singapore, and South Korea. I would like to visit Paris to see the Eiffel Tower and experience its beautiful culture. I also want to explore Singapore because of its modern attractions and clean environment. South Korea interests me because of its culture, food, music, and famous tourist spots.",
+            "My family is very important to me because they give me love, support, and guidance. In my free time, I enjoy listening to music, watching videos, and spending time with my friends and family. These activities help me relax and create wonderful memories."
+        ],
+        destinations: [
+            { src: "zerahlen1.jpg", title: "Parisian Horizons", description: "Taking in the timeless architectural majesty of the Eiffel Tower against a breathtaking golden skyline.", highlight: "Elegance" },
+            { src: "zerahlen2.jpg", title: "Seoul Traditions", description: "Immersing in the vibrant cultural heritage and iconic tourist landmarks that define the heart of South Korea.", highlight: "Heritage" },
+            { src: "zerahlen3.jpg", title: "Singaporean Splendor", description: "Exploring the innovative Merlion Park and the pristine, modern atmosphere of the Lion City's waterfront.", highlight: "Innovation" }
+        ],
+        family: [
+            {
+                src: "",
+                title: "Foundation of Love",
+                description: "My family is incredibly important to me, providing the love and guidance that helps me strive for my best in everything I do.",
+                highlight: "Love"
+            },
+            {
+                src: "",
+                title: "Constant Support",
+                description: "They are my foundation, offering the unwavering support and motivation I need throughout my academic and personal journey.",
+                highlight: "Support"
+            },
+            {
+                src: "",
+                title: "Cherished Moments",
+                description: "Spending quality time with my loved ones helps me relax and create wonderful memories that I will always cherish.",
+                highlight: "Memories"
+            }
+        ],
+        hobbies: [
+            ["headphones", "Musical Appreciation", "Curating diverse playlists to find inspiration and maintain focus during academic and personal pursuits."],
+            ["travel_explore", "Global Discovery", "Embarking on cultural expeditions to discover unique landscapes and foster a globally-minded perspective."],
+            ["movie", "Watching Movies & Drama", "I love watching movies and K-dramas to relax and find creative inspiration. Exploring these heartfelt stories is a meaningful way for me to unwind and discover new perspectives."]
+        ],
+        music: {
+            artists: ["Taylor Swift", "Sabrina Carpenter", "Laufey"],
+            songs: ["Daylight", "Feather", "From The Start"],
+            playlists: ["Study Glow", "Travel Dreams", "Friends Mix"]
+        },
+        contact: {
+            email: "zerah.escoton@example.com",
+            phone: "+63 912 345 6789",
+            facebook: "facebook.com/zerah.escoton",
+            address: "San Jose, Antique, Philippines",
+            github: "github.com/zerah",
+            linkedin: "linkedin.com/in/zerah-escoton"
         }
-      });
-      Array.from(container.children).forEach(child => {
-        const link = child.hasAttribute('data-page') ? child : child.querySelector('[data-page]');
-        if (link && !navOrder.includes(link.getAttribute('data-page'))) child.style.display = 'none';
-      });
+    },
+    avril: {
+        password: "avril_003",
+        name: "Avril Dhana Fernandez",
+        badge: "",
+        paletteName: "Velvet Cocoa & Coral",
+        primary: "#4A2C2C",
+        secondary: "#FF6F61",
+        accent: "#FFE3E3",
+        weightHeavy: "600",
+        weightBold: "500",
+        surface: "#ffffff",
+        avatar: "avril.jpg",
+        navigation: [
+            { key: "about", label: "About me", icon: "person" },
+            { key: "contact", label: "Contact info", icon: "mail" },
+            { key: "bsoad", label: "BSOAd", icon: "school" },
+            { key: "travel", label: "Travel", icon: "travel_explore" }
+        ],
+        about: [
+            "Hi, I’m Avril Dhana Fernandez! I’m someone who loves finding order in chaos whether that's organizing a workspace, structuring a project, or diving into a new skill. I have a huge appreciation for the details, a love for continuous learning, and a habit of diving deep into creative projects in my free time.",
+            "When I'm not focusing on productivity and organization, you can usually find me exploring new things or lazing around if bored, learning about different cultures and languages, or unwinding with a good story, I love traveling and I've been in many places but I don't mind traveling for more new things and places to explore, I adore cats and dogs but mostly cats usually in my free time I spent my time learning to cook new recipes.",
+            "I believe that every journey whether it's a new career step or a flight to a new place is a chance to grow. Let's connect and build something great together!"
+        ],
+        education: "Bachelor of Science in Office Administration",
+        headline: "Bugasong, Antique, Philippines",
+        destinations: [
+            { src: "avril1.jpg", title: "Golden Hour Reflection", description: "The serene beauty of the horizon as day turns to night.", highlight: "Serenity" },
+            { src: "avril2.jpg", title: "Urban Dynamics", description: "Exploring the intersection of architectural precision and city life.", highlight: "Explore" },
+            { src: "avril3.jpg", title: "Cultural Immersion", description: "Discovering deep-rooted traditions and heritage in new environments.", highlight: "Culture" },
+            { src: "avril4.jpg", title: "Strategic Planning", description: "Finding inspiration for organized workflows in quiet, scenic spots.", highlight: "Focus" },
+            { src: "avril5.jpg", title: "Serene Composition", description: "A personal portrait capturing a moment of poise and reflection, framed by the intricate symmetry of traditional bamboo craftsmanship.", highlight: "Balance" },
+            { src: "avril6.jpg", title: "Global Perspective", description: "Expanding organizational acumen through diverse travel experiences.", highlight: "Vision" },
+            { src: "avril7.jpg", title: "Coastal Systems", description: "Analyzing the resilient and adaptable nature of maritime landscapes.", highlight: "Adapt" },
+            { src: "avril8.jpg", title: "Mountain Peak", description: "Attaining new heights and a broader view of personal goals.", highlight: "Journey" },
+            { src: "avril9.jpg", title: "Comfort in Discovery", description: "Embracing new beginnings with a positive and focused mindset.", highlight: "Growth" }
+        ],
+        hobbies: [
+            ["travel_explore", "Global Exploration", "Understanding diverse organizational structures and cultural nuances."],
+            ["menu_book", "Strategic Reading", "Gaining insights from diverse literature to inform problem-solving."],
+            ["translate", "Linguistic Acumen", "Enhancing communication skills and cross-cultural understanding."],
+            ["restaurant", "Culinary Experimentation", "Applying methodical approaches to create innovative outcomes."],
+            ["pets", "Compassionate Advocacy", "Promoting well-being and responsible care for animals."]
+        ],
+        music: {
+            artists: ["NIKI", "Beabadoobee", "Ariana Grande"],
+            songs: ["Every Summertime", "Glue Song", "POV"],
+            playlists: ["Productivity & Focus", "Strategic Thinking Ambiance", "Creative Flow Soundtrack"]
+        },
+        contact: {
+            email: "avrilonzo@gmail.com",
+            phone: "+63 975 825 1912",
+            facebook: "facebook.com/avril.dhana",
+            address: "San Jose, Antique, Philippines",
+            instagram: "instagram.com/kanna.riri",
+            linkedin: "linkedin.com/in/avril-fernandez"
+        }
+    },
+    ramonette: {
+        password: "@12clarisse",
+        name: "Ramonette Clarisse Roel",
+        badge: "",
+        paletteName: "Midnight Amethyst",
+        primary: "#54155a",
+        secondary: "#A21CAF",
+        accent: "#ebdbee",
+        surface: "#F3E8F2",
+        textLabel: "#1F2937",
+        textName: "#d7beda",
+        weightHeavy: "600",
+        weightBold: "500",
+        avatar: "claris_profile.jpg",
+        headline: "Hamtic, Antique, Philippines",
+        education: "Bachelor of Science in Office Administration",
+        educationSub: "",
+        navigation: [
+            { key: "about", label: "About me", icon: "person" },
+            { key: "gallery", label: "Photos", icon: "photo_library" },
+            { key: "beach", label: "Beach", icon: "beach_access" },
+            { key: "family", label: "Family", icon: "family_restroom" }
+        ],
+        about: [
+            "As a dedicated Bachelor of Science in Office Administration student, I am passionate about developing efficient organizational systems and fostering productive work environments.",
+            "I thrive on challenges that require meticulous attention to detail and effective communication, constantly seeking opportunities to enhance my administrative and management skills.",
+            "Beyond my academic pursuits, I find balance and inspiration in nature, particularly by the ocean, and cherish moments spent with my family, who are my constant source of motivation."
+        ],
+        destinations: [
+            "Boracay for its white sand and stunning sunsets",
+            "Palawan for the crystal clear lagoons and hidden beaches",
+            "Bali for the tropical atmosphere and coastal culture"
+        ],
+        family: [
+            {
+                src: "claris_family1.jpg",
+                title: "Graduation Milestone",
+                description: "A proud moment shared with my family. Their constant support and belief in me have been the foundation of my success."
+            },
+            {
+                src: "claris_family2.jpg",
+                title: "Family Celebration",
+                description: "Gathering together to celebrate life's special moments. Family is where our story begins."
+            },
+            {
+                src: "claris_family3.jpg",
+                title: "Traditional Gathering",
+                description: "Upholding our family traditions that keep us connected and grounded in our roots."
+            },
+            {
+                src: "claris_family4.jpg",
+                title: "Cherished Memories",
+                description: "Capturing the laughter and stories that bind us together across generations."
+            },
+            {
+                src: "claris_family5.jpg",
+                title: "Weekend Bonding",
+                description: "Cherishing the simple joy of spending quality time with my loved ones during the weekends."
+            },
+            {
+                src: "claris_family6.jpg",
+                title: "Academic Achievement",
+                description: "Another milestone reached with the people who matter most. Their encouragement makes every struggle worth it."
+            }
+        ],
+        hobbies: [
+            ["beach_access", "Beach Trips", "Relaxing by the water and enjoying the sun."],
+            ["family_restroom", "Family Traditions", "Making memories with my relatives."],
+            ["photo_camera", "Photography", "Capturing moments at the beach and with family."],
+            ["local_florist", "Nature Walks", "Appreciating the scenic beauty of the outdoors."]
+        ],
+        music: {
+            artists: ["SZA", "Lana Del Rey", "H.E.R."],
+            songs: ["Snooze", "Summertime Sadness", "Best Part"],
+            playlists: ["Beach Vibes", "Family Sunday", "Late Night Soul"]
+        },
+        contact: {
+            email: "ramonette.roel@example.com",
+            phone: "+63 912 345 6789",
+            facebook: "facebook.com/ramonette.clarisse",
+            address: "Patnongon, Antique, Philippines",
+            github: "github.com/ramonette",
+            linkedin: "linkedin.com/in/ramonette-roel"
+        },
+        beachIntro: "The sound of the waves, the fresh air, and the beautiful view of the ocean help reduce stress and make people feel happy. The beach is also a great place to spend time with family and friends, enjoy outdoor activities, and appreciate the beauty of nature.",
+        beach: [
+            { src: "beach1.jpg", title: "Sunset Serenity", description: "The horizon glows as the sun dips below the waves." },
+            { src: "beach2.jpg", title: "Crystal Clear", description: "Inviting turquoise waters that refresh the soul." },
+            { src: "beach3.jpg", title: "Palm Breeze", description: "Tropical palms swaying gently in the coastal wind." },
+            { src: "beach4.jpg", title: "Golden Sands", description: "Pristine shores perfect for making footprints and memories." },
+            { src: "beach5.jpg", title: "Beach Reflections", description: "Laughter and shared secrets reflect the joy of friendship by the shore." }
+        ],
+        photos: [
+            { src: "claris1.jpg", title: "Mountain Peak", description: "Finding perspective and peace amidst the rolling hills and fresh air.", highlight: "Adventure" },
+            { src: "claris2.jpg", title: "Urban Pulse", description: "Exploring the vibrant energy of city life and modern architecture.", highlight: "Explore" },
+            { src: "claris3.jpg", title: "Academic Connection", description: "Cherishing shared milestones and the supportive bond of friendship during our academic journey.", highlight: "Academic" },
+            { src: "claris4.jpg", title: "Creative Workspace", description: "The focus and dedication behind every academic and personal project.", highlight: "Focus" },
+            { src: "claris5.jpg", title: "Lush Greenery", description: "A quiet walk through nature to recharge the creative spirit.", highlight: "Nature" },
+            { src: "claris6.jpg", title: "Candid Moments", description: "Unscripted joy and the beauty found in everyday life.", highlight: "Life" },
+            { src: "claris7.jpg", title: "City Skyline", description: "Dreaming big under the vast canopy of the metropolitan horizon.", highlight: "Vision" },
+            { src: "claris8.jpg", title: "Reflective Waters", description: "Stillness by the lake, reflecting on goals and future paths.", highlight: "Peace" },
+            { src: "claris9.jpg", title: "Floral Aesthetics", description: "Appreciating the delicate details of the natural world around us.", highlight: "Design" },
+            { src: "claris10.jpg", title: "Morning Calm", description: "Starting the day with clarity and a positive mindset.", highlight: "Routine" },
+            { src: "claris11.jpg", title: "Pathway Found", description: "Every step forward is a step toward personal excellence.", highlight: "Journey" },
+            { src: "claris12.jpg", title: "Academic Bonds", description: "Building lasting connections and sharing laughter within the campus halls.", highlight: "Collaboration" }
+        ],
+        traits: [
+            { icon: "sentiment_satisfied", text: "Friendly" },
+            { icon: "chat_bubble", text: "Talkative when I am comfortable" },
+            { icon: "nightlife", text: "Not a good dancer but I love dancing" },
+            { icon: "family_history", text: "Tatay's girl" },
+            { icon: "child_care", text: "Bunso" },
+            { icon: "water_drop", text: "Crybaby" },
+            { icon: "eco", text: "Nature lover" }
+        ],
+        skills: [
+            { name: "Office Management", level: "Advanced", icon: "business_center" },
+            { name: "Data Entry & Management", level: "Proficient", icon: "database" },
+            { name: "Communication", level: "Excellent", icon: "chat" },
+            { name: "Organizational Skills", level: "Advanced", icon: "checklist" },
+            { name: "Microsoft Office Suite", level: "Proficient", icon: "computer" },
+            { name: "Time Management", level: "Proficient", icon: "schedule" }
+        ]
+    }
+};
+
+const galleryItems = [
+    ["best_friends.jpg", "Best Friends", "A warm memory with the people who make ordinary days brighter."],
+    ["classmate.jpg", "Classmate", "Shared learning moments and school experiences."],
+    ["friends.jpg", "Friends", "Small adventures, big laughs, and meaningful support."],
+    ["outing_with_friends.jpg", "Outing With Friends", "A day outside filled with stories and connection."]
+];
+
+// Define DOM cache and state objects to fix ReferenceErrors
+const DOM = {
+    app: document.getElementById("app"),
+    loginScreen: document.getElementById("login-screen"),
+    mainScreen: document.getElementById("main-screen"),
+    content: document.getElementById("content"),
+    drawer: document.getElementById("drawer"),
+    logoutDialog: document.getElementById("logout-dialog"),
+    loginForm: document.getElementById("login-form"),
+    pageTitle: document.getElementById("page-title"),
+    bottomNav: document.getElementById("bottom-nav"),
+    drawerMenu: document.getElementById("drawer-menu"),
+    loader: null,
+    welcomeNote: null
+};
+
+let state = {
+    activeUserKey: null,
+    currentPage: "about"
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Refresh DOM references once the content is loaded to avoid null references
+    DOM.loader = document.querySelector(".loader-overlay");
+    DOM.welcomeNote = document.querySelector(".welcome-notification");
+
+    // Initialize the login screen with Clarisse's (ramonette) blue theme
+    applyTheme('ramonette');
+
+    bindLogin();
+    bindNavigation();
+
+    const remembered = localStorage.getItem("portfolio_connect_user");
+    if (remembered) {
+        if (users[remembered]) { // Check if the remembered user key is still valid
+        signIn(remembered, true, true);
+        } else {
+            // If the remembered user key is no longer valid (e.g., changed from 'zerah' to 'zerahlen')
+            localStorage.removeItem("portfolio_connect_user");
+            console.warn(`Invalid remembered user key '${remembered}' found in localStorage. Clearing it.`);
+        }
+    }
+});
+
+function bindLogin() {
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    DOM.loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const username = usernameInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+
+        if (!users[username] || users[username].password !== password) {
+            showLoginMessage("Incorrect username or password.", true);
+            return;
+        }
+
+        showLoginMessage("");
+        signIn(username, document.getElementById("remember-me").checked);
     });
 
-    renderPage("about");
+    document.getElementById("toggle-password").addEventListener("click", () => {
+        const btn = document.getElementById("toggle-password");
+        const icon = btn.querySelector(".material-symbols-rounded");
+        const show = passwordInput.type === "password";
+        passwordInput.type = show ? "text" : "password";
+        icon.textContent = show ? "visibility_off" : "visibility";
+        btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    });
 
-    // 3. Final professional transition into the app
-    welcomeOverlay.style.opacity = "0";
-    elements.loginScreen.classList.remove("active"); 
-    elements.portfolioScreen.classList.add("active");
-    elements.loginScreen.style.filter = "none";
-    elements.loginScreen.style.transform = "none";
-    document.title = `${user.name} | Portfolio Connect`;
+    document.getElementById("google-signin").addEventListener("click", () => {
+        showLoginMessage("Google sign-in is ready for design preview.", false);
+    });
 
+    document.getElementById("forgot-password").addEventListener("click", (e) => {
+        e.preventDefault();
+        showLoginMessage("Please contact the portfolio owner to reset access.", false);
+    });
+}
+
+/**
+ * Displays a feedback message on the login screen.
+ */
+function showLoginMessage(text, isError = true) {
+    const errorElement = document.getElementById("login-error");
+    errorElement.style.color = isError ? "#dc2626" : "var(--login-primary)";
+    errorElement.textContent = text;
+}
+
+function bindNavigation() {
+    // Use event delegation for dynamic navigation items
+    DOM.bottomNav.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-page]");
+        if (btn) setPage(btn.dataset.page);
+    });
+
+    DOM.drawerMenu.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-drawer-page]");
+        if (btn) {
+            closeDrawer();
+            setPage(btn.dataset.drawerPage);
+        }
+    });
+
+    document.getElementById("menu-button").addEventListener("click", openDrawer);
+    document.getElementById("avatar-button").addEventListener("click", openDrawer);
+    document.getElementById("close-drawer").addEventListener("click", closeDrawer);
+    
+    document.getElementById("cancel-logout").addEventListener("click", closeLogoutDialog);
+    document.getElementById("confirm-logout").addEventListener("click", signOut);
+}
+
+/**
+ * Handles sign-in with a polished transition and welcome message.
+ * @param {string} userKey - User identifier
+ * @param {boolean} remember - Save session
+ * @param {boolean} skipAnimation - Bypass loader for auto-login
+ */
+function signIn(userKey, remember, skipAnimation = false) {
+    const user = users[userKey];
+    
+    // Apply theme immediately so the loader reflects the logging-in user's colors
+    applyTheme(userKey);
+    
+    const finishSignIn = () => {
+        state.activeUserKey = userKey;
+        state.currentPage = "about";
+
+        remember ? localStorage.setItem("portfolio_connect_user", userKey) : localStorage.removeItem("portfolio_connect_user");
+
+        hydrateChrome();
+        DOM.loginScreen.classList.remove("active");
+        DOM.mainScreen.classList.add("active");
+        setPage("about");
+    };
+
+    if (skipAnimation) {
+        finishSignIn();
+        return;
+    }
+
+    // Show high-level loading transition
+    if (DOM.loader) {
+        const firstName = user.name.split(' ')[0]; // Extract the first name for a nickname
+        DOM.loader.innerHTML = `
+            <div class="loader-spinner"></div>
+            <div class="loader-welcome-container">
+                <span class="loader-welcome-label">Welcome back,</span>
+                <h1 class="loader-welcome-name">${firstName}</h1>
+            </div>
+        `;
+        DOM.loader.classList.add("active");
+    }
+
+    // Sophisticated transition sequence: 1.5s Delay -> Screen Switch -> Show Welcome -> Reveal Profile
     setTimeout(() => {
-      welcomeOverlay.remove();
-      elements.loginMessage.textContent = "";
-      elements.loginForm.reset();
-      elements.passwordInput.type = "password";
-    }, 800);
-  }, 2400); // 2.4s display time for the welcome sequence
+        finishSignIn();
+        
+        setTimeout(() => {
+            if (DOM.loader) DOM.loader.classList.remove("active");
+        }, 1200); // Keep blur active a bit longer to let the welcome note pop
+    }, 1500); 
 }
 
 function signOut() {
-  state.currentUser = null;
-  closeLogoutDialog();
-  elements.portfolioScreen.classList.remove("active");
-  elements.loginScreen.classList.add("active");
-  document.title = "Portfolio Connect";
-  elements.usernameInput.focus();
+    state.activeUserKey = null;
+    localStorage.removeItem("portfolio_connect_user");
+    applyTheme('ramonette'); // Reset to Clarisse's blue theme on logout
+    closeLogoutDialog();
+    DOM.mainScreen.classList.remove("active");
+    DOM.loginScreen.classList.add("active");
+    DOM.loginForm.reset();
+    document.getElementById("login-error").textContent = "";
+}
+
+function activeUser() {
+    return users[state.activeUserKey];
+}
+
+function applyTheme(userKey = state.activeUserKey) {
+    const user = users[userKey];
+    if (!user) return;
+
+    document.documentElement.style.setProperty("--primary", user.primary);
+    document.documentElement.style.setProperty("--secondary", user.secondary);
+    document.documentElement.style.setProperty("--accent", user.accent);
+    document.documentElement.style.setProperty("--app-bg", user.surface);
+    document.documentElement.style.setProperty("--welcome-label", user.textLabel || "rgba(16, 32, 51, 0.6)");
+    document.documentElement.style.setProperty("--welcome-name", user.textName || "var(--ink)");
+    document.documentElement.style.setProperty("--weight-heavy", user.weightHeavy || "900");
+    document.documentElement.style.setProperty("--weight-bold", user.weightBold || "700");
+}
+
+function hydrateChrome() {
+    const user = activeUser();
+    
+    // Dynamic avatar fallback for empty profiles to maintain high-level UI quality
+    const avatarUrl = user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`;
+    
+    document.getElementById("top-avatar").src = avatarUrl;
+    document.getElementById("top-avatar").alt = user.name;
+    document.getElementById("drawer-avatar").src = avatarUrl;
+    document.getElementById("drawer-avatar").alt = user.name;
+    document.getElementById("drawer-name").textContent = user.name;
+    document.getElementById("drawer-badge").textContent = user.badge;
+
+    // Hydrate Bottom Nav
+    DOM.bottomNav.innerHTML = user.navigation.map(nav => `
+        <button class="nav-item ${nav.key === state.currentPage ? "active" : ""}" 
+                type="button" 
+                data-page="${nav.key}"
+                aria-label="Go to ${nav.label}"
+                aria-current="${nav.key === state.currentPage ? "page" : "false"}">
+            <span class="material-symbols-rounded">${nav.icon}</span>
+            <small>${nav.label}</small>
+        </button>
+    `).join("");
+
+    // Hydrate Drawer Menu
+    DOM.drawerMenu.innerHTML = user.navigation.map(nav => `
+        <button type="button" 
+                class="${nav.key === state.currentPage ? "active" : ""}" 
+                data-drawer-page="${nav.key}">
+            <span class="material-symbols-rounded">${nav.icon}</span>
+            ${nav.label}
+        </button>
+    `).join("") + `
+        <hr>
+        <button type="button" id="drawer-logout"><span class="material-symbols-rounded">logout</span>Logout</button>
+    `;
+
+    document.getElementById("drawer-logout").addEventListener("click", () => {
+        closeDrawer();
+        openLogoutDialog();
+    });
+}
+
+function setPage(page) {
+    state.currentPage = page;
+    const user = activeUser();
+    const navItem = user.navigation.find(n => n.key === page);
+    DOM.pageTitle.textContent = navItem ? navItem.label : "Profile";
+
+    // Update all navigation elements (Bottom Nav and Drawer)
+    const navButtons = document.querySelectorAll("[data-page], [data-drawer-page]");
+    navButtons.forEach((button) => {
+        const pageKey = button.dataset.page || button.dataset.drawerPage;
+        const isActive = pageKey === page;
+        button.classList.toggle("active", isActive);
+        if (button.hasAttribute('data-page')) {
+            button.setAttribute("aria-current", isActive ? "page" : "false");
+        }
+    });
+
+    DOM.content.innerHTML = renderPage(page);
+    DOM.content.scrollTop = 0;
+    DOM.content.focus({ preventScroll: true });
+    attachImageFallbacks();
 }
 
 function renderPage(page) {
-  if (!state.currentUser || !pageLabels[page] || state.isTransitioning) return;
-
-  const config = state.currentUser.uiConfig;
-  state.isTransitioning = true;
-
-  // Phase 1: Exit Animation for the container
-  elements.content.style.opacity = "0";
-  if (config.useMotion) elements.content.style.transform = "translateY(-8px) scale(0.98)";
-  elements.content.style.transition = config.useMotion ? "opacity 0.25s cubic-bezier(0.4, 0, 1, 1), transform 0.25s cubic-bezier(0.4, 0, 1, 1)" : "opacity 0.2s ease-in";
-
-  setTimeout(() => {
-    state.currentPage = page;
-    elements.pageTitle.textContent = pageLabels[page];
-
-    const templates = {
-      about: renderAboutPage,
-      travel: renderTravelPage,
-      hobbies: renderHobbiesPage,
-      music: renderMusicPage,
-      contact: renderContactPage,
+    const user = activeUser();
+    
+    // Dispatcher pattern: mapping keys to render functions
+    const renderers = {
+        about: renderAbout,
+        gallery: renderGallery,
+        hobbies: renderHobbies,
+        music: renderMusic,
+        contact: renderContact,
+        travel: renderTravel,
+        beach: renderBeach,
+        family: renderFamily,
+        bsoad: renderBsoad
     };
 
-    updateActiveNavigation(page);
-    elements.content.innerHTML = templates[page]();
-    closeSidebar();
-    const scrollTarget = elements.portfolioScreen || window;
-    scrollTarget.scrollTo({ top: 0, behavior: 'instant' });
-
-    // Phase 2: Prepare new elements for entry
-    const cards = elements.content.querySelectorAll(".page");
-    cards.forEach(card => {
-      card.style.opacity = "0";
-      if (config.useMotion) {
-        card.style.transform = "translateY(15px) scale(0.99)";
-        card.style.transition = "opacity 0.5s cubic-bezier(0, 0, 0.2, 1), transform 0.5s cubic-bezier(0, 0, 0.2, 1)";
-      } else {
-        // Smooth fade for non-motion profiles like Kristine's
-        card.style.transition = "opacity 0.4s ease-out";
-      }
-    });
-
-    // Reveal the container
-    elements.content.style.opacity = "1";
-    if (config.useMotion) elements.content.style.transform = "translateY(0) scale(1)";
-
-    // Execute staggered reveal of individual components
-    cards.forEach((card, index) => {
-      setTimeout(() => {
-        card.style.opacity = "1";
-        if (config.useMotion) card.style.transform = "translateY(0) scale(1)";
-      }, index * config.staggerDelay);
-    });
-
-    // Release transition lock after animations finish
-    setTimeout(() => {
-      state.isTransitioning = false;
-    }, (cards.length * config.staggerDelay) + 500);
-  }, 250); // Consistent delay for the "Feature Switch" feel
+    const contentHtml = renderers[page] ? renderers[page]() : renderAbout();
+    return `<div class="page">${contentHtml}</div>`;
 }
 
-function updateActiveNavigation(page) {
-  document.querySelectorAll(".nav-item").forEach((button) => {
-    button.classList.toggle("active", button.dataset.page === page);
-  });
-
-  document.querySelectorAll(".menu-item[data-page]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.page === page);
-  });
-}
-
-function renderAboutPage() {
-  const user = state.currentUser;
-
-  return `
-    <section class="profile-card page">
-      <div class="profile-banner" style="background: ${user.bannerGradient}">
-        <img class="profile-photo-banner" src="${user.image}" alt="${user.name}">
-        <div class="profile-info">
-          <h2 class="name" style="margin:0; color: ${user.bannerTextColor}">Hi, I'm ${user.name}</h2>
-          <div class="location" style="color: ${user.bannerTextColor}; opacity: 0.85">${user.location}</div>
-          <div class="theme-badge" style="color: ${user.themeBadgeTextColor}; border-color: ${user.themeBadgeTextColor};">
-            ${user.themeBadge}
-          </div>
-        </div>
-      </div>
-    </section>
-    ${renderInfoCard(user.sectionIcons?.about || "school", "Biography", user.bio)}
-    ${renderInfoCard(user.sectionIcons?.about || "school", "Education", user.school)}
-    <section class="info-card page">
-      <h3 class="section-title"><span class="material-icons">flag</span>My Goals in Life</h3>
-      <div class="goal-grid">
-        ${(user.goals || defaultGoals).map(([icon, goal]) => `
-          <article class="goal-card">
-            <span class="material-icons goal-icon">${icon}</span>
-            <h4>${goal}</h4>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-    <section class="info-card page">
-      <h3 class="section-title"><span class="material-icons">check_circle</span>Skills</h3>
-      <div class="skill-list">
-        ${user.skills.map((skill) => `
-          <div class="skill-item">
-            <span class="material-icons">check_circle</span>
-            <span>${skill}</span>
-          </div>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderTravelPage() {
-  const gallery = state.currentUser.gallery || []; 
-
-  return `
-    ${renderSectionIntro(state.currentUser.sectionIcons?.travel || "photo_library", "My Gallery", "Meaningful memories captured with friends and classmates.")}
-    <div class="gallery-grid">
-      ${gallery.map(([image, title, description]) => `
-        <article class="gallery-card page">
-          <img src="${image}" alt="${title}">
-          <div class="gallery-body">
-            <span class="gallery-label">Memory</span>
-            <h3 class="item-title">${title}</h3>
-            <p class="item-meta">${description}</p>
-          </div>
-        </article>
-      `).join("")}
-    </div>
-  `;
-}
-
-function renderHobbiesPage() {
-  return `
-    ${renderSectionIntro(state.currentUser.sectionIcons?.hobbies || "interests", "Hobbies", "Things I enjoy in daily life.")}
-    <div class="item-list">
-      ${state.currentUser.hobbies.map(([icon, title, description]) => renderIconItem(icon, title, description)).join("")}
-    </div>
-  `;
-}
-
-function renderMusicPage() {
-  const user = state.currentUser;
-  
-  return `
-    ${renderSectionIntro(user.sectionIcons?.music || "music_note", user.musicLabel || "Music", user.musicIntro || "Songs and playlists that fit the vibe.")}
-    <div class="item-list">
-      ${state.currentUser.music.map(([icon, title, description]) => renderIconItem(icon, title, description)).join("")}
-    </div>
-  `;
-}
-
-function renderContactPage() {
-  return `
-    ${renderSectionIntro(state.currentUser.sectionIcons?.contact || "mail", "Contact", "Ways to get in touch.")}
-    <div class="item-list">
-      ${state.currentUser.contact.map(([icon, title, value]) => renderContactItem(icon, title, value)).join("")}
-    </div>
-  `;
-}
-
-function renderInfoCard(icon, title, text) {
-  return `
-    <section class="info-card page">
-      <h3 class="section-title"><span class="material-icons">${icon}</span>${title}</h3>
-      <p class="card-text">${text}</p>
-    </section>
-  `;
-}
-
-function renderSectionIntro(icon, title, text) {
-  return `
-    <section class="section-card page">
-      <h2 class="section-title"><span class="material-icons">${icon}</span>${title}</h2>
-      <p class="card-text">${text}</p>
-    </section>
-  `;
-}
-
-function renderIconItem(icon, title, description) {
-  return `
-    <article class="item-card page">
-      <span class="material-icons item-icon">${icon}</span>
-      <div>
-        <h3 class="item-title">${title}</h3>
-        <p class="item-meta">${description}</p>
-      </div>
-    </article>
-  `;
-}
-
-function renderContactItem(icon, title, value) {
-  const href = getContactHref(title, value);
-
-  if (!href) {
+function renderAbout() {
+    const user = activeUser();
+    // Dynamic avatar fallback for high-level UI consistency
+    const avatarUrl = user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random&color=fff`;
+    
     return `
-      <article class="item-card page">
-        <span class="material-icons item-icon">${icon}</span>
-        <div>
-          <h3 class="item-title">${title}</h3>
-          <p class="item-meta">${value}</p>
-        </div>
-      </article>
+        <section class="profile-hero">
+            <img src="${avatarUrl}" alt="${user.name}">
+            <div class="hero-content" style="flex: 1; min-width: 0;">
+                <h1 class="text-small">Hi, I'm ${user.name}</h1>
+                ${user.badge && user.badge.trim() !== '' ? `
+                    <div class="badge-row" style="margin-top: 10px;">
+                        ${user.badge.split(" - ").filter(b => b.trim()).map((badge) => `<span>${badge}</span>`).join("")}
+                    </div>
+                ` : ''}
+                ${user.headline ? `
+                    <p class="hero-headline" style="margin-top: 12px;">
+                        <span class="material-symbols-rounded" style="font-size: 1rem;">location_on</span>
+                        ${user.headline}
+                    </p>
+                ` : ''}
+            </div>
+        </section>
+        ${user.education ? `
+            <section class="card mt-16">
+                <h2 class="mb-12">Education</h2>
+                <div class="education-row">
+                    <div class="education-icon">
+                        <span class="material-symbols-rounded">school</span>
+                    </div>
+                    <div>
+                        <h3 class="education-title">${user.education}</h3>
+                        <p class="education-sub">${user.educationSub || ''}</p>
+                    </div>
+                </div>
+            </section>
+        ` : ''}
+
+        <section class="card">
+            ${state.activeUserKey !== 'avril' ? `
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span class="material-symbols-rounded" style="color: var(--primary);">${state.activeUserKey === 'zerahlen' ? 'account_circle' : 'fingerprint'}</span>
+                ${state.activeUserKey !== 'zerahlen' ? '<h2 style="margin: 0;">Biography</h2>' : ''}
+            </div>
+            ` : ''}
+            ${user.about.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+        </section>
+
+        ${user.traits ? `
+            <section class="card mt-16">
+                <h2 class="mb-16">${state.activeUserKey === 'ramonette' ? 'Personal traits' : 'Fun Facts About Me'}</h2>
+                <div class="traits-container">
+                    ${user.traits.map(trait => `
+                        <div class="trait-tag">
+                            <span class="material-symbols-rounded trait-icon">${trait.icon}</span>
+                            ${trait.text}
+                        </div>
+                    `).join("")}
+                </div>
+            </section>
+        ` : ''}
+
     `;
-  }
-
-  return `
-    <a class="item-card contact-link page" href="${href}" target="${href.startsWith("http") ? "_blank" : "_self"}" rel="noopener">
-      <span class="material-icons item-icon">${icon}</span>
-      <div>
-        <h3 class="item-title">${title}</h3>
-        <p class="item-meta">${value}</p>
-      </div>
-      <span class="material-icons contact-arrow">open_in_new</span>
-    </a>
-  `;
 }
 
-function getContactHref(title, value) {
-  const normalizedTitle = title.toLowerCase();
-  const normalizedValue = value.trim();
+function renderListSection(title, items, icon) {
+    return `
+        <section class="card">
+            <h2>${title}</h2>
+            <div class="destination-list">
+                ${items.map((item) => `
+                    <div><span class="material-symbols-rounded">${icon}</span>${item}</div>
+                `).join("")}
+            </div>
+        </section>
+    `;
+}
 
-  if (normalizedTitle.includes("facebook")) {
-    if (normalizedValue.startsWith("facebook.com")) {
-      return `https://${normalizedValue}`;
+function renderFamily() {
+    const user = activeUser();
+    const familyData = user.family || [];
+    
+    const isGalleryStyle = familyData.some(item => typeof item === 'object');
+
+    if (!isGalleryStyle) {
+        return renderListSection("Family & Heritage", familyData, "family_restroom");
     }
-    return `https://facebook.com/${normalizedValue.replace(/\s+/g, "")}`;
-  }
 
-  if (normalizedTitle.includes("instagram")) {
-    return ""; // Instagram handle should not be a clickable link as per request
-  }
+    return `
+        <section class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span class="material-symbols-rounded" style="color: var(--primary); font-size: 28px;">groups</span>
+                    <h2 style="margin: 0;">Family Memories</h2>
+                </div>
+                <span style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--primary); background: var(--accent); padding: 4px 10px; border-radius: 8px; letter-spacing: 0.5px;">${familyData.length} Memories</span>
+            </div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin: 0;">
+                Cherishing every milestone and everyday joy with my family—my constant source of strength, love, and inspiration throughout my journey.
+            </p>
+        </section>
 
-  if (normalizedTitle.includes("email")) {
-    return `mailto:${normalizedValue}`;
-  }
-
-  if (normalizedTitle.includes("phone")) {
-    return `tel:${normalizedValue.replace(/\s+/g, "")}`;
-  }
-
-  if (normalizedValue.startsWith("http")) {
-    return normalizedValue;
-  }
-
-  return `https://${normalizedValue}`;
+        <div class="gallery-grid">
+            ${familyData.map((item) => `
+                <article class="gallery-card">
+                    <div class="gallery-image">
+                        ${item.src ? `<img src="${item.src}" alt="${item.title}">` : `
+                            <div class="image-fallback">
+                                <span class="material-symbols-rounded" style="font-size: 2.5rem; opacity: 0.2;">groups</span>
+                            </div>
+                        `}
+                    </div>
+                    <div class="gallery-copy">
+                        <span class="photo-badge" style="background-color: var(--accent); color: var(--primary); font-size: 0.65rem; padding: 2px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 8px;">${item.highlight || 'Memory'}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </article>
+            `).join("")}
+        </div>
+    `;
 }
 
-function openSidebar() {
-  elements.sidebar.classList.add("open");
-  elements.sidebarOverlay.classList.add("open");
-  elements.sidebar.style.zIndex = "2000";
-  elements.sidebarOverlay.style.zIndex = "1999";
+function renderBeach() {
+    const user = activeUser();
+    const beachData = user.beach || [];
+
+    return `
+        <section class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+            <h2 style="color: var(--primary); margin-bottom: 8px;">Beach Escapes</h2>
+            <p style="font-style: italic; opacity: 0.9; line-height: 1.6;">"${user.beachIntro}"</p>
+        </section>
+
+        <div class="gallery-grid">
+            ${beachData.map((item) => `
+                <article class="gallery-card">
+                    <div class="gallery-image">
+                        <img src="${item.src}" alt="${item.title}">
+                    </div>
+                    <div class="gallery-copy">
+                        <span class="photo-badge" style="background-color: var(--accent); color: var(--primary); font-size: 0.65rem; padding: 2px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 8px;">Nature View</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </article>
+            `).join("")}
+        </div>
+    `;
 }
 
-function closeSidebar() {
-  elements.sidebar.classList.remove("open");
-  elements.sidebarOverlay.classList.remove("open");
+function renderTravel() {
+    const user = activeUser();
+    const isAvril = state.activeUserKey === 'avril';
+    const isZerah = state.activeUserKey === 'zerahlen';
+
+    if (isAvril || isZerah) {
+        const introTitle = isAvril ? "Travel Adventures" : "Dream Destinations";
+        const introQuote = isAvril 
+            ? "Exploring world-class systems and serene landscapes to broaden my global perspective."
+            : "Seeking new horizons to discover diverse cultures, modern innovations, and heartfelt stories.";
+
+        return `
+            <section class="card" style="margin-bottom: 20px; border-left: 4px solid var(--primary);">
+                <h2 style="color: var(--primary); margin-bottom: 8px;">${introTitle}</h2>
+                <p style="font-style: italic; opacity: 0.9; line-height: 1.6;">"${introQuote}"</p>
+            </section>
+
+            <div class="gallery-grid">
+                ${user.destinations.map((item) => `
+                <article class="gallery-card">
+                    <div class="gallery-image">
+                        ${item.src ? `<img src="${item.src}" alt="${item.title}">` : `
+                            <div class="image-fallback">
+                                <span class="material-symbols-rounded" style="font-size: 2.5rem; opacity: 0.2;">landscape</span>
+                            </div>
+                        `}
+                    </div>
+                    <div class="gallery-copy">
+                        <span class="photo-badge" style="background-color: var(--accent); color: var(--primary); font-size: 0.65rem; padding: 2px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 8px;">${item.highlight}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                </article>
+                `).join("")}
+            </div>
+        `;
+    }
+    return renderListSection("Travel Adventures", user.destinations, "travel_explore");
+}
+
+function renderBsoad() {
+    if (state.activeUserKey === 'avril') {
+        return `
+            <section class="card" style="border-top: 4px solid var(--primary);">
+                <h2 style="color: var(--primary);">BS in Office Administration</h2>
+                <p style="color: #1e293b; font-weight: 600; line-height: 1.6; margin-bottom: 20px;">
+                    Inspired by my love for finding order in chaos, my journey in Office Administration is focused on creating structured environments and diving deep into the details of project management.
+                </p>
+                <div class="hobby-list">
+                    <article class="hobby-item" style="border-color: var(--line); background: #ffffff;">
+                        <span class="material-symbols-rounded" style="color: var(--primary);">architecture</span>
+                        <div>
+                            <strong style="color: var(--primary);">Workspace Organization</strong>
+                            <p style="color: var(--muted);">Applying a methodical approach to transform workspaces into peak-efficiency zones.</p>
+                        </div>
+                    </article>
+                    <article class="hobby-item" style="border-color: var(--line); background: #ffffff;">
+                        <span class="material-symbols-rounded" style="color: var(--primary);">account_tree</span>
+                        <div>
+                            <strong style="color: var(--primary);">Project Structuring</strong>
+                            <p style="color: var(--muted);">Utilizing a detail-oriented habit to build solid project frameworks and manageable workflows.</p>
+                        </div>
+                    </article>
+                    <article class="hobby-item" style="border-color: var(--line); background: #ffffff;">
+                        <span class="material-symbols-rounded" style="color: var(--primary);">history_edu</span>
+                        <div>
+                            <strong style="color: var(--primary);">Continuous Excellence</strong>
+                            <p style="color: var(--muted);">Diving deep into learning new administrative tools and cultural nuances for global professional growth.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        `;
+    }
+
+    return `
+        <section class="card">
+            <h2>Bachelor of Science in Office Administration</h2>
+            <p>I am pursuing a degree in Office Administration, focusing on organizational efficiency and professional management.</p>
+            <div class="hobby-list">
+                <article class="hobby-item">
+                    <span class="material-symbols-rounded">inventory_2</span>
+                    <div>
+                        <strong>Organization</strong>
+                        <p>Streamlining processes and maintaining order in fast-paced environments.</p>
+                    </div>
+                </article>
+                <article class="hobby-item">
+                    <span class="material-symbols-rounded">support_agent</span>
+                    <div>
+                        <strong>Communication</strong>
+                        <p>Developing professional correspondence and client relations skills.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    `;
+}
+
+function renderGallery() {
+    const user = activeUser();
+    const items = user.photos || galleryItems;
+
+    return `
+        <section class="card" style="margin-bottom: 20px; border-top: 4px solid var(--primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span class="material-symbols-rounded" style="color: var(--primary); font-size: 28px;">photo_library</span>
+                    <h2 style="margin: 0;">My Photos</h2>
+                </div>
+                <span style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--primary); background: var(--accent); padding: 4px 10px; border-radius: 8px; letter-spacing: 0.5px;">${items.length} Moments</span>
+            </div>
+            <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin: 0;">
+                A curated visual journey showcasing academic achievements, cherished connections, and personal growth captured through the lens of lived experiences.
+            </p>
+        </section>
+
+        <div class="gallery-grid">
+            ${items.map((item) => {
+                const src = Array.isArray(item) ? item[0] : item.src;
+                const title = Array.isArray(item) ? item[1] : item.title;
+                const desc = Array.isArray(item) ? item[2] : item.description;
+                const highlight = item.highlight || "Perspective";
+                
+                return `
+                <article class="gallery-card">
+                    <div class="gallery-image">
+                        <img src="${src}" alt="${title}">
+                    </div>
+                    <div class="gallery-copy">
+                        <span class="photo-badge" style="background-color: var(--accent); color: var(--primary); font-size: 0.65rem; padding: 2px 10px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 8px;">${highlight}</span>
+                        <h3>${title}</h3>
+                        <p>${desc}</p>
+                    </div>
+                </article>
+                `;
+            }).join("")}
+        </div>
+    `;
+}
+
+function renderHobbies() {
+    const user = activeUser();
+    const isZerah = state.activeUserKey === 'zerahlen';
+
+    const intro = isZerah ? `
+        <section class="card" style="margin-bottom: 24px; border-left: 4px solid var(--primary); background: white;">
+            <h2 style="color: var(--primary); margin-bottom: 8px;">Personal Interests</h2>
+            <p style="font-style: italic; opacity: 0.9; line-height: 1.6; color: var(--primary);">
+                "Exploring the intersections of sound, culture, and storytelling to enrich my perspective and drive personal growth."
+            </p>
+        </section>
+    ` : '';
+
+    return `
+        ${intro}
+        <div class="hobby-list">
+            ${user.hobbies.map(([icon, title, description]) => `
+                <article class="hobby-item" ${isZerah ? `style="background: white; border: 1px solid var(--accent); box-shadow: 0 10px 25px rgba(43, 45, 66, 0.06); border-radius: 20px; padding: 16px;"` : ''}>
+                    <div ${isZerah ? `style="background: var(--app-bg); color: var(--secondary); width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; margin-right: 4px; flex-shrink: 0;"` : ''}>
+                        <span class="material-symbols-rounded" ${isZerah ? 'style="font-size: 26px;"' : ''}>${icon}</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <strong ${isZerah ? `style="color: var(--primary); font-size: 1.05rem; display: block; margin-bottom: 2px;"` : ''}>${title}</strong>
+                        <p ${isZerah ? `style="color: var(--muted); line-height: 1.5; font-size: 0.88rem;"` : ''}>${description}</p>
+                    </div>
+                </article>
+            `).join("")}
+        </div>
+    `;
+}
+
+function renderMusic() {
+    const music = activeUser().music;
+    return `
+        <section class="mini-player">
+            <strong>Now Previewing</strong>
+            <p>${music.playlists[0]} - ${music.songs[0]}</p>
+        </section>
+        <div class="music-list">
+            ${music.artists.map((artist, index) => `
+                <article class="music-card">
+                    <div class="album-art">
+                        <span class="material-symbols-rounded">music_note</span>
+                    </div>
+                    <div>
+                        <h3>${artist}</h3>
+                        <p>${music.songs[index]} - ${music.playlists[index]}</p>
+                    </div>
+                </article>
+            `).join("")}
+        </div>
+    `;
+}
+
+function renderContact() {
+    const contact = activeUser().contact;
+    const items = [
+        ["mail", "Email", contact.email],
+        ["location_on", "Address", contact.address],
+        ["phone", "Phone Number", contact.phone],
+        ["public", "Facebook", contact.facebook],
+        ["photo_camera", "Instagram", contact.instagram],
+        ["code", "GitHub", contact.github],
+        ["work", "LinkedIn", contact.linkedin]
+    ].filter(item => item[2]);
+
+    const intro = state.activeUserKey === 'avril' ? `
+        <div style="margin-bottom: 20px; padding-left: 4px;">
+            <span style="background: #F5F3FF; color: #4F46E5; border: 1px solid #C7D2FE; font-size: 0.65rem; padding: 4px 12px; border-radius: 100px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);">contact me</span>
+        </div>
+    ` : '';
+
+    return `
+        ${intro}
+        <div class="contact-list">
+            ${items.map(([icon, label, value]) => `
+                <article class="contact-card" style="border-radius: 18px;">
+                    <div class="contact-icon">
+                        <span class="material-symbols-rounded">${icon}</span>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 2px; font-weight: 800;">${label}</h3>
+                        <p style="color: var(--primary); font-weight: 600;">${value}</p>
+                    </div>
+                    ${state.activeUserKey === 'avril' ? '<span class="material-symbols-rounded" style="margin-left: auto; font-size: 1.2rem; color: #818CF8; opacity: 0.7;">chevron_right</span>' : ''}
+                </article>
+            `).join("")}
+        </div>
+    `;
+}
+
+function attachImageFallbacks() {
+    document.querySelectorAll(".gallery-image img").forEach((image) => {
+        image.addEventListener("error", () => {
+            image.style.display = "none";
+        });
+    });
+}
+
+function openDrawer() {
+    DOM.drawer.classList.add("open");
+    DOM.drawer.setAttribute("aria-hidden", "false");
+}
+
+function closeDrawer() {
+    DOM.drawer.classList.remove("open");
+    DOM.drawer.setAttribute("aria-hidden", "true");
 }
 
 function openLogoutDialog() {
-  closeSidebar();
-  elements.modalOverlay.classList.add("open");
-  elements.logoutDialog.classList.add("open");
+    DOM.logoutDialog.classList.add("open");
+    DOM.logoutDialog.setAttribute("aria-hidden", "false");
 }
 
 function closeLogoutDialog() {
-  elements.modalOverlay.classList.remove("open");
-  elements.logoutDialog.classList.remove("open");
+    DOM.logoutDialog.classList.remove("open");
+    DOM.logoutDialog.setAttribute("aria-hidden", "true");
 }
-
-elements.showPassword.addEventListener("change", () => {
-  elements.passwordInput.type = elements.showPassword.checked ? "text" : "password";
-});
-
-elements.loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const username = elements.usernameInput.value.trim().toLowerCase();
-  const password = elements.passwordInput.value.trim();
-
-  if (users[username]?.password === password) {
-    signIn(username);
-    return;
-  }
-
-  elements.loginMessage.textContent = "Invalid username or password.";
-});
-
-document.getElementById("googleBtn").addEventListener("click", () => {
-  elements.loginMessage.textContent = "Google sign-in is ready for design preview.";
-});
-
-document.getElementById("forgotLink").addEventListener("click", (event) => {
-  event.preventDefault();
-  elements.loginMessage.textContent = "Please contact the portfolio owner to reset access.";
-});
-
-// Safe Event Listener Attachment to prevent script crashes
-const safeListen = (el, event, fn) => el && el.addEventListener(event, fn);
-
-safeListen(elements.menuBtn, "click", openSidebar);
-safeListen(elements.sidebarOverlay, "click", closeSidebar);
-safeListen(elements.topAvatarButton, "click", openSidebar);
-safeListen(elements.modalOverlay, "click", closeLogoutDialog);
-safeListen(elements.cancelLogout, "click", closeLogoutDialog);
-safeListen(elements.confirmLogout, "click", signOut);
-safeListen(elements.logoutBtn, "click", openLogoutDialog);
-
-document.querySelectorAll(".nav-item, .menu-item[data-page]").forEach((button) => {
-  button.addEventListener("click", () => renderPage(button.dataset.page));
-});
-
-/**
- * High-Level Sticky Navigation
- * Ensures the header is context-aware: hides on scroll down, reveals on scroll up.
- */
-function initStickyHeader() {
-  if (!elements.topAvatarButton) return;
-  const header = elements.topAvatarButton.closest('header') || elements.topAvatarButton.parentElement;
-  if (!header) return;
-
-  const scrollContainer = elements.portfolioScreen || window;
-  let lastScroll = 0;
-  header.style.cssText += 'position: sticky; top: 0; z-index: 1000; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease, backdrop-filter 0.3s ease;';
-
-  scrollContainer.addEventListener('scroll', () => {
-    const currentScroll = scrollContainer === window ? 
-      Math.max(0, window.pageYOffset || document.documentElement.scrollTop) : 
-      scrollContainer.scrollTop;
-
-    if (currentScroll > 5) {
-      header.style.background = 'rgba(255, 255, 255, 0.75)';
-      header.style.backdropFilter = 'blur(20px) saturate(160%)';
-      header.style.borderBottom = '1px solid var(--line-soft)';
-    } else {
-      header.style.background = '#ffffff';
-      header.style.backdropFilter = 'none';
-      header.style.borderBottom = '1px solid transparent';
-    }
-
-    header.style.transform = 'translateY(0)';
-    lastScroll = Math.max(0, currentScroll);
-  }, { passive: true });
-}
-
-function setupMobileAdaptability() {
-    const updateVH = () => {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-
-    // Optimized resize handling for mobile orientation changes
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(updateVH, 150);
-    }, { passive: true });
-
-    window.addEventListener('orientationchange', () => {
-        setTimeout(updateVH, 200); // Small delay to allow browser layout to settle
-    }, { passive: true });
-
-    updateVH();
-
-    // Enhance mobile touch feedback responsiveness
-    document.addEventListener('touchstart', () => {}, { passive: true });
-}
-
-setupMobileAdaptability();
-initStickyHeader();
