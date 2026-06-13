@@ -75,7 +75,7 @@ const users = {
     location: "Bugasong, Antique, Philippines",
     bio: "I am a dedicated student pursuing a Bachelor of Science in Office Administration. I am passionate about developing strong organizational, communication, and administrative skills to contribute effectively to any professional environment. I enjoy learning about efficient office management and utilizing technology to streamline operations.",
     school: "Bachelor of Science in Office Administration",
-    skills: ["Office Management", "Communication", "Record Keeping", "Customer Service", "Administrative Support", "Microsoft Office Suite", "Organizational Skills", "Time Management"],
+    skills: ["Office Management", "Microsoft Office Suite", "Communication", "Administrative Support", "Customer Service", "Time Management", "Record Keeping", "Organizational Skills"],
     image: "kristine1.jpg",
     goals: [
       ["school", "Excel in Office Administration studies"],
@@ -126,8 +126,8 @@ const users = {
     sectionIcons: { about: "history_edu", travel: "flight", hobbies: "volunteer_activism", contact: "alternate_email", music: "local_cafe" },
     uiConfig: {
       navOrder: ['about', 'travel', 'hobbies', 'music'],
-      staggerDelay: 60, // Professional staggered entrance
-      useMotion: false  // Keep movement disabled for her specific design
+      staggerDelay: 70,
+      useMotion: true
     }
   }
 };
@@ -380,11 +380,11 @@ function renderAboutPage() {
     </section>
     <section class="info-card page">
       <h3 class="section-title"><span class="material-icons">check_circle</span>Skills</h3>
-      <div class="skill-list">
+      <div class="skill-list" ${user.name.includes('Kristine') ? 'style="grid-template-columns: repeat(2, 1fr); gap: 10px;"' : ''}>
         ${user.skills.map((skill) => `
-          <div class="skill-item">
-            <span class="material-icons">check_circle</span>
-            <span>${skill}</span>
+          <div class="skill-item" ${user.name.includes('Kristine') ? 'style="padding: 12px; background: #fff; border: 1px solid var(--line-soft); border-radius: 8px; box-shadow: var(--shadow-1);"' : ''}>
+            <span class="material-icons" ${user.name.includes('Kristine') ? 'style="color: var(--blue); font-size: 1.1rem;"' : ''}>check_circle</span>
+            <span ${user.name.includes('Kristine') ? 'style="font-size: 0.84rem; font-weight: 500;"' : ''}>${skill}</span>
           </div>
         `).join("")}
       </div>
